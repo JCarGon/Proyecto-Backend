@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "Goku Three Changes",
+    "personaje": "Goku",
+    "franquicia": "Dragon Ball",
+    "precio": 1900,
+    "dimensiones": "53x53x51 cm (alto x ancho x largo)",
+    "material": "resina",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure1-1.png",
+    "imagenes": ["DBZfigure1-2.png", "DBZfigure1-3.png", "DBZfigure1-4.png", "DBZfigure1-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Goku vs Nappa",
+    "personaje": "Goku",
+    "franquicia": "Dragon Ball",
+    "precio": 300,
+    "dimensiones": "43x32x32 cm (alto x ancho x largo)",
+    "material": "resina",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure2-1.png",
+    "imagenes": ["DBZfigure2-2.png", "DBZfigure2-3.png", "DBZfigure2-4.png", "DBZfigure2-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Shenron",
+    "personaje": "Shenron",
+    "franquicia": "Dragon Ball",
+    "precio": 270,
+    "dimensiones": "40 cm",
+    "material": "PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure3-1.png",
+    "imagenes": ["DBZfigure3-2.png", "DBZfigure3-3.png", "DBZfigure3-4.png", "DBZfigure3-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Son Gohan vs Cell Jr",
+    "personaje": "Son Gohan",
+    "franquicia": "Dragon Ball",
+    "precio": 160,
+    "dimensiones": "25x26x41 cm (alto x ancho x largo)",
+    "material": "resina",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure4-1.png",
+    "imagenes": ["DBZfigure4-2.png", "DBZfigure4-3.png", "DBZfigure4-4.png", "DBZfigure4-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Frieza 4th Form",
+    "personaje": "Frieza",
+    "franquicia": "Dragon Ball",
+    "precio": 1300,
+    "dimensiones": "76x47x52 cm (alto x ancho x largo)",
+    "material": "resina, PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure5-1.png",
+    "imagenes": ["DBZfigure5-2.png", "DBZfigure5-3.png", "DBZfigure5-4.png", "DBZfigure5-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Trunk's Time Machine",
+    "personaje": "Trunk",
+    "franquicia": "Dragon Ball",
+    "precio": 1290,
+    "dimensiones": "63x73x65 cm (alto x ancho x largo)",
+    "material": "resina, PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure6-1.png",
+    "imagenes": ["DBZfigure6-2.png", "DBZfigure6-3.png", "DBZfigure6-4.png", "DBZfigure6-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Frieza \"4th Form\" Bonus Version",
+    "personaje": "Frieza",
+    "franquicia": "Dragon Ball",
+    "precio": 2300,
+    "dimensiones": "61x43x34 cm (alto x ancho x largo)",
+    "material": "polystone",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure7-1.png",
+    "imagenes": ["DBZfigure7-2.png", "DBZfigure7-3.png", "DBZfigure7-4.png", "DBZfigure7-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Super Saiyan Trunks vs Mecha Frieza",
+    "personaje": "Trunks",
+    "franquicia": "Dragon Ball",
+    "precio": 370,
+    "dimensiones": "28 cm",
+    "material": "PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure8-1.png",
+    "imagenes": ["DBZfigure8-2.png", "DBZfigure8-3.png", "DBZfigure8-4.png", "DBZfigure8-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Vegetto Super Saiyan Blue",
+    "personaje": "Vegetto",
+    "franquicia": "Dragon Ball",
+    "precio": 220,
+    "dimensiones": "45 cm",
+    "material": "PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure9-1.png",
+    "imagenes": ["DBZfigure9-2.png", "DBZfigure9-3.png", "DBZfigure9-4.png", "DBZfigure9-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Janemba",
+    "personaje": "Janemba",
+    "franquicia": "Dragon Ball",
+    "precio": 200,
+    "dimensiones": "27 cm",
+    "material": "PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "DBZfigure10-1.png",
+    "imagenes": ["DBZfigure10-2.png", "DBZfigure10-3.png", "DBZfigure10-4.png", "DBZfigure10-5.png"],
+    "cantidad": 100
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "The Legend of Naruto Uzumaki",
+    "personaje": "Naruto Uzumaki",
+    "franquicia": "Naruto",
+    "precio": 3200,
+    "dimensiones": "87x75x67 cm",
+    "material": "resina, PVC, metal magnet",
+    "marca": "Tsume",
+    "imagenPrincipal": "NarutoFigure1-1.png",
+    "imagenes": ["NarutoFigure1-2.png", "NarutoFigure1-3.png", "NarutoFigure1-4.png", "NarutoFigure1-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Naruto vs. Pain Elite",
+    "personaje": "Naruto Uzumaki",
+    "franquicia": "Naruto",
+    "precio": 1850,
+    "dimensiones": "69x46x64 cm",
+    "material": "poliresina",
+    "marca": "Figurama",
+    "imagenPrincipal": "NarutoFigure2-1.png",
+    "imagenes": ["NarutoFigure2-2.png", "NarutoFigure2-3.png", "NarutoFigure2-4.png", "NarutoFigure2-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Uzumaki Naruto Sage Art: Lava Release Rasenshuriken",
+    "personaje": "Naruto Uzumaki",
+    "franquicia": "Naruto",
+    "precio": 75,
+    "dimensiones": "24 cm",
+    "material": "PVC",
+    "marca": "Tamashii Nations Bandai",
+    "imagenPrincipal": "NarutoFigure3-1.png",
+    "imagenes": ["NarutoFigure3-2.png", "NarutoFigure3-3.png", "NarutoFigure3-4.png", "NarutoFigure3-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Gaara vs. Kimimaro Elite Dynamic Statue",
+    "personaje": "Gaara",
+    "franquicia": "Naruto",
+    "precio": 1150,
+    "dimensiones": "61x51x48 cm",
+    "material": "polystone, PVC",
+    "marca": "Hez Collectibles",
+    "imagenPrincipal": "NarutoFigure4-1.png",
+    "imagenes": ["NarutoFigure4-2.png", "NarutoFigure4-3.png", "NarutoFigure4-4.png", "NarutoFigure4-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Gaara IKIGAI",
+    "personaje": "Gaara",
+    "franquicia": "Naruto",
+    "precio": 469,
+    "dimensiones": "28x18x36 cm",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "NarutoFigure5-1.png",
+    "imagenes": ["NarutoFigure5-2.png", "NarutoFigure5-3.png", "NarutoFigure5-4.png", "NarutoFigure5-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Namikaze Minato vs Kurama Battle of Destiny",
+    "personaje": "Namikaze Minato",
+    "franquicia": "Naruto",
+    "precio": 1850,
+    "dimensiones": "59x76x60 cm",
+    "material": "polystone, PVC",
+    "marca": "Hez Collectibles",
+    "imagenPrincipal": "NarutoFigure6-1.png",
+    "imagenes": ["NarutoFigure6-2.png", "NarutoFigure6-3.png", "NarutoFigure6-4.png", "NarutoFigure6-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Minato Namikaze IKIGAI",
+    "personaje": "Minato Namikaze",
+    "franquicia": "Naruto",
+    "precio": 449,
+    "dimensiones": "41x18x36 cm",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "NarutoFigure7-1.png",
+    "imagenes": ["NarutoFigure7-2.png", "NarutoFigure7-3.png", "NarutoFigure7-4.png", "NarutoFigure7-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Sakura Haruno Gals DX",
+    "personaje": "Sakura Haruno",
+    "franquicia": "Naruto",
+    "precio": 369,
+    "dimensiones": "27 cm",
+    "material": "PVC",
+    "marca": "Megahouse",
+    "imagenPrincipal": "NarutoFigure8-1.png",
+    "imagenes": ["NarutoFigure8-2.png", "NarutoFigure8-3.png", "NarutoFigure8-4.png", "NarutoFigure8-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Kakashi Susanoo Ver. Precious G.E.M.",
+    "personaje": "Kakashi Susanoo",
+    "franquicia": "Naruto",
+    "precio": 299,
+    "dimensiones": "28 cm",
+    "material": "PVC",
+    "marca": "Megahouse",
+    "imagenPrincipal": "NarutoFigure9-1.png",
+    "imagenes": ["NarutoFigure9-2.png", "NarutoFigure9-3.png", "NarutoFigure9-4.png", "NarutoFigure9-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Hinata Gals DX Ver. 3",
+    "personaje": "Hinata Gals",
+    "franquicia": "Naruto",
+    "precio": 259,
+    "dimensiones": "35x20x18 cm",
+    "material": "PVC",
+    "marca": "Megahouse",
+    "imagenPrincipal": "NarutoFigure10-1.png",
+    "imagenes": ["NarutoFigure10-2.png", "NarutoFigure10-3.png", "NarutoFigure10-4.png", "NarutoFigure10-5.png"],
+    "cantidad": 100
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "Attack on Titan Erwin Smith",
+    "personaje": "Erwin Smith",
+    "franquicia": "Attack on Titan",
+    "precio": 1944,
+    "dimensiones": "36 cm",
+    "material": "resina",
+    "marca": "Bandai",
+    "imagenPrincipal": "AOTfigure1-1.png",
+    "imagenes": ["AOTfigure1-2.png", "AOTfigure1-3.png", "AOTfigure1-4.png", "AOTfigure1-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Attack on Titan Levi Ackerman",
+    "personaje": "Levi Ackerman",
+    "franquicia": "Attack on Titan",
+    "precio": 55,
+    "dimensiones": "36 cm",
+    "material": "PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "AOTfigure2-1.png",
+    "imagenes": ["AOTfigure2-2.png", "AOTfigure2-3.png", "AOTfigure2-4.png", "AOTfigure2-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Attack on Titan Levi Renewal Package ARTFX J",
+    "personaje": "Levi Ackerman",
+    "franquicia": "Attack on Titan",
+    "precio": 165,
+    "dimensiones": "28 cm",
+    "material": "PVC",
+    "marca": "Kotobukiya",
+    "imagenPrincipal": "AOTfigure3-1.png",
+    "imagenes": ["AOTfigure3-2.png", "AOTfigure3-3.png", "AOTfigure3-4.png", "AOTfigure3-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Attack on Titan Levi Humanity's Strongest Soldier",
+    "personaje": "Levi Ackerman",
+    "franquicia": "Attack on Titan",
+    "precio": 399,
+    "dimensiones": "24 cm",
+    "material": "PVC",
+    "marca": "Pony Canyon",
+    "imagenPrincipal": "AOTfigure4-1.png",
+    "imagenes": ["AOTfigure4-2.png", "AOTfigure4-3.png", "AOTfigure4-4.png", "AOTfigure4-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Attack on Titan Armin Arlert: Colossus Titan",
+    "personaje": "Titan Armin",
+    "franquicia": "Attack on Titan",
+    "precio": 80,
+    "dimensiones": "26 cm",
+    "material": "PVC",
+    "marca": "Pop Up Parade L",
+    "imagenPrincipal": "AOTfigure5-1.png",
+    "imagenes": ["AOTfigure5-2.png", "AOTfigure5-3.png", "AOTfigure5-4.png", "AOTfigure5-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Shingeki no Kyojin Mikasa VS The Armored Titan",
+    "personaje": "Mikasa Ackerman",
+    "franquicia": "Attack on Titan",
+    "precio": 700,
+    "dimensiones": "40x40x37 cm (alto x ancho x largo)",
+    "material": "polystone, resina",
+    "marca": "Oniri Creations",
+    "imagenPrincipal": "AOTfigure6-1.png",
+    "imagenes": ["AOTfigure6-2.png", "AOTfigure6-3.png", "AOTfigure6-4.png", "AOTfigure6-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Shingeki no Kyojin Mikasa Ackerman",
+    "personaje": "Mikasa Ackerman",
+    "franquicia": "Attack on Titan",
+    "precio": 659,
+    "dimensiones": "39x38x40 cm (alto x ancho x largo)",
+    "material": "poliuretano, resina, PVC",
+    "marca": "Kitsune Statue",
+    "imagenPrincipal": "AOTfigure7-1.png",
+    "imagenes": ["AOTfigure7-2.png", "AOTfigure7-3.png", "AOTfigure7-4.png", "AOTfigure7-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Attack on Titan Mikasa Ackerman DX",
+    "personaje": "Mikasa Ackerman",
+    "franquicia": "Attack on Titan",
+    "precio": 200,
+    "dimensiones": "28 cm",
+    "material": "PVC",
+    "marca": "Good Smile Company",
+    "imagenPrincipal": "AOTfigure8-1.png",
+    "imagenes": ["AOTfigure8-2.png", "AOTfigure8-3.png", "AOTfigure8-4.png", "AOTfigure8-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "The Female Titan vs The Attack Titan",
+    "personaje": "The Female Titan",
+    "franquicia": "Attack on Titan",
+    "precio": 2200,
+    "dimensiones": "45 cm",
+    "material": "resina",
+    "marca": "Bandai",
+    "imagenPrincipal": "AOTfigure9-1.png",
+    "imagenes": ["AOTfigure9-2.png", "AOTfigure9-3.png", "AOTfigure9-4.png", "AOTfigure9-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Attack Titan vs Armored Titan",
+    "personaje": "Attack Titan",
+    "franquicia": "Attack on Titan",
+    "precio": 1959,
+    "dimensiones": "61x73x70 cm (alto x ancho x largo)",
+    "material": "polystone, resina",
+    "marca": "Figurama Collectors",
+    "imagenPrincipal": "AOTfigure10-1.png",
+    "imagenes": ["AOTfigure10-2.png", "AOTfigure10-3.png", "AOTfigure10-4.png", "AOTfigure10-5.png"],
+    "cantidad": 100
+  }
+]

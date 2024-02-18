@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "Midoriya, Bakugo & Todoroki Prime 1 Studio",
+    "personaje": "Midoriya, Bakugo y Todoroki",
+    "franquicia": "My Hero Academia",
+    "precio": 2100,
+    "dimensiones": "69x57x55 cm (alto x ancho x largo)",
+    "material": "polystone, resina",
+    "marca": "Prime 1 Studio",
+    "imagenPrincipal": "MyHeroAcademiaFigure1-1.png",
+    "imagenes": ["MyHeroAcademiaFigure1-2.png", "MyHeroAcademiaFigure1-3.png", "MyHeroAcademiaFigure1-4.png", "MyHeroAcademiaFigure1-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Izuku Midoriya vs. Muscular",
+    "personaje": "Izuku Midoriya",
+    "franquicia": "My Hero Academia",
+    "precio": 600,
+    "dimensiones": "30x29x21 cm (alto x ancho x largo)",
+    "material": "PVC",
+    "marca": "S-FIRE",
+    "imagenPrincipal": "MyHeroAcademiaFigure2-1.png",
+    "imagenes": ["MyHeroAcademiaFigure2-2.png", "MyHeroAcademiaFigure2-3.png", "MyHeroAcademiaFigure2-4.png", "MyHeroAcademiaFigure2-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Izuku Midoriya vs. Stain",
+    "personaje": "Izuku Midoriya",
+    "franquicia": "My Hero Academia",
+    "precio": 539,
+    "dimensiones": "30 cm",
+    "material": "PVC",
+    "marca": "S-FIRE",
+    "imagenPrincipal": "MyHeroAcademiaFigure3-1.png",
+    "imagenes": ["MyHeroAcademiaFigure3-2.png", "MyHeroAcademiaFigure3-3.png", "MyHeroAcademiaFigure3-4.png", "MyHeroAcademiaFigure3-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Izuku Midoriya IKIGAI",
+    "personaje": "Izuku Midoriya",
+    "franquicia": "My Hero Academia",
+    "precio": 400,
+    "dimensiones": "29x18x36 cm (alto x ancho x largo)",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "MyHeroAcademiaFigure4-1.png",
+    "imagenes": ["MyHeroAcademiaFigure4-2.png", "MyHeroAcademiaFigure4-3.png", "MyHeroAcademiaFigure4-4.png", "MyHeroAcademiaFigure4-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Izuku Midoriya & Eri S-FIRE",
+    "personaje": "Izuku Midoriya",
+    "franquicia": "My Hero Academia",
+    "precio": 490,
+    "dimensiones": "20x31x20 cm (alto x ancho x largo)",
+    "material": "PVC",
+    "marca": "SEGA",
+    "imagenPrincipal": "MyHeroAcademiaFigure5-1.png",
+    "imagenes": ["MyHeroAcademiaFigure5-2.png", "MyHeroAcademiaFigure5-3.png", "MyHeroAcademiaFigure5-4.png", "MyHeroAcademiaFigure5-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Izuku Midoriya Dark Deku",
+    "personaje": "Izuku Midoriya",
+    "franquicia": "My Hero Academia",
+    "precio": 349,
+    "dimensiones": "29 cm",
+    "material": "PVC",
+    "marca": "Kotobukiya",
+    "imagenPrincipal": "MyHeroAcademiaFigure6-1.png",
+    "imagenes": ["MyHeroAcademiaFigure6-2.png", "MyHeroAcademiaFigure6-3.png", "MyHeroAcademiaFigure6-4.png", "MyHeroAcademiaFigure6-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Katsuki Bakugo IKIGAI",
+    "personaje": "Katsuki Bakugo",
+    "franquicia": "My Hero Academia",
+    "precio": 389,
+    "dimensiones": "30x18x36 cm (alto x ancho x largo)",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "MyHeroAcademiaFigure7-1.png",
+    "imagenes": ["MyHeroAcademiaFigure7-2.png", "MyHeroAcademiaFigure7-3.png", "MyHeroAcademiaFigure7-4.png", "MyHeroAcademiaFigure7-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Endeavor IKIGAI",
+    "personaje": "Endeavor",
+    "franquicia": "My Hero Academia",
+    "precio": 389,
+    "dimensiones": "37x18x36 cm (alto x ancho x largo)",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "MyHeroAcademiaFigure8-1.png",
+    "imagenes": ["MyHeroAcademiaFigure8-2.png", "MyHeroAcademiaFigure8-3.png", "MyHeroAcademiaFigure8-4.png", "MyHeroAcademiaFigure8-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Shoto Todoroki IKIGAI",
+    "personaje": "Shoto Todoroki",
+    "franquicia": "My Hero Academia",
+    "precio": 439,
+    "dimensiones": "34x18x36 cm (alto x ancho x largo)",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "MyHeroAcademiaFigure9-1.png",
+    "imagenes": ["MyHeroAcademiaFigure9-2.png", "MyHeroAcademiaFigure9-3.png", "MyHeroAcademiaFigure9-4.png", "MyHeroAcademiaFigure9-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "All Might S-FIRE",
+    "personaje": "All Might",
+    "franquicia": "My Hero Academia",
+    "precio": 269,
+    "dimensiones": "20 cm",
+    "material": "PVC",
+    "marca": "SEGA",
+    "imagenPrincipal": "MyHeroAcademiaFigure10-1.png",
+    "imagenes": ["MyHeroAcademiaFigure10-2.png", "MyHeroAcademiaFigure10-3.png", "MyHeroAcademiaFigure10-4.png", "MyHeroAcademiaFigure10-5.png"],
+    "cantidad": 100
+  }
+]

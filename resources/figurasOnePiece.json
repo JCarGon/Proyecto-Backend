@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "Blackbeard ULTRA HQS",
+    "personaje": "Blackbeard",
+    "franquicia": "One Piece",
+    "precio": 2499,
+    "dimensiones": "105x80x75 cm",
+    "material": "Imán, poliresina, metal",
+    "marca": "Tsume",
+    "imagenPrincipal": "OnePieceFigure1-1.png",
+    "imagenes": ["OnePieceFigure1-2.png", "OnePieceFigure1-3.png", "OnePieceFigure1-4.png", "OnePieceFigure1-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Buggy the Clown HQS DIORAMAX",
+    "personaje": "Buggy the Clown",
+    "franquicia": "One Piece",
+    "precio": 1999,
+    "dimensiones": "75x57x52 cm",
+    "material": "Imán, poliresina, metal, PVC",
+    "marca": "Tsume",
+    "imagenPrincipal": "OnePieceFigure2-1.png",
+    "imagenes": ["OnePieceFigure2-2.png", "OnePieceFigure2-3.png", "OnePieceFigure2-4.png", "OnePieceFigure2-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Brook HQS DIORAMAX",
+    "personaje": "Brook",
+    "franquicia": "One Piece",
+    "precio": 1499,
+    "dimensiones": "65x57x61 cm",
+    "material": "Imán, poliresina, metal, PVC",
+    "marca": "Tsume",
+    "imagenPrincipal": "OnePieceFigure3-1.png",
+    "imagenes": ["OnePieceFigure3-2.png", "OnePieceFigure3-3.png", "OnePieceFigure3-4.png", "OnePieceFigure3-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Eustass Kid IKIGAI",
+    "personaje": "Eustass Kid",
+    "franquicia": "One Piece",
+    "precio": 489,
+    "dimensiones": "43x22x36 cm",
+    "material": "poliresina",
+    "marca": "Tsume",
+    "imagenPrincipal": "OnePieceFigure4-1.png",
+    "imagenes": ["OnePieceFigure4-2.png", "OnePieceFigure4-3.png", "OnePieceFigure4-4.png", "OnePieceFigure4-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Nami HQS DIORAMAX",
+    "personaje": "Nami",
+    "franquicia": "One Piece",
+    "precio": 1299,
+    "dimensiones": "64x41x49 cm",
+    "material": "Imán, poliresina, metal, PVC",
+    "marca": "Tsume",
+    "imagenPrincipal": "OnePieceFigure5-1.png",
+    "imagenes": ["OnePieceFigure5-2.png", "OnePieceFigure5-3.png", "OnePieceFigure5-4.png", "OnePieceFigure5-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Zoro Juro Portrait of Pirates Warriors Alliance",
+    "personaje": "Zoro",
+    "franquicia": "One Piece",
+    "precio": 229,
+    "dimensiones": "22 cm",
+    "material": "PVC",
+    "marca": "Megahouse",
+    "imagenPrincipal": "OnePieceFigure6-1.png",
+    "imagenes": ["OnePieceFigure6-2.png", "OnePieceFigure6-3.png", "OnePieceFigure6-4.png", "OnePieceFigure6-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Luffy Taro",
+    "personaje": "Luffy",
+    "franquicia": "One Piece",
+    "precio": 89,
+    "dimensiones": "20 cm",
+    "material": "PVC",
+    "marca": "Banpresto",
+    "imagenPrincipal": "OnePieceFigure7-1.png",
+    "imagenes": ["OnePieceFigure7-2.png", "OnePieceFigure7-3.png", "OnePieceFigure7-4.png", "OnePieceFigure7-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Monkey D. Luffy Gear 5 Giant",
+    "personaje": "Monkey",
+    "franquicia": "One Piece",
+    "precio": 129,
+    "dimensiones": "30 cm",
+    "material": "PVC",
+    "marca": "Bandai",
+    "imagenPrincipal": "OnePieceFigure8-1.png",
+    "imagenes": ["OnePieceFigure8-2.png", "OnePieceFigure8-3.png", "OnePieceFigure8-4.png", "OnePieceFigure8-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Monkey D. Luffy -Gear5-",
+    "personaje": "Luffy",
+    "franquicia": "One Piece",
+    "precio": 239,
+    "dimensiones": "23 cm",
+    "material": "PVC",
+    "marca": "Megahouse",
+    "imagenPrincipal": "OnePieceFigure9-1.png",
+    "imagenes": ["OnePieceFigure9-2.png", "OnePieceFigure9-3.png", "OnePieceFigure9-4.png", "OnePieceFigure9-5.png"],
+    "cantidad": 100
+  },
+  {
+    "nombre": "Luffy Special Puchirama DX Logbox Re:Birth Vol. 2",
+    "personaje": "Luffy",
+    "franquicia": "One Piece",
+    "precio": 109,
+    "dimensiones": "15 cm",
+    "material": "PVC",
+    "marca": "Megahouse",
+    "imagenPrincipal": "OnePieceFigure10-1.png",
+    "imagenes": ["OnePieceFigure10-2.png", "OnePieceFigure10-3.png", "OnePieceFigure10-4.png", "OnePieceFigure10-5.png"],
+    "cantidad": 100
+  }
+]
