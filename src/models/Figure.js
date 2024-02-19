@@ -11,8 +11,9 @@ const figureSchema = new Schema({
   material: { type: String, required: true },
   brand: { type: String, required: true },
   principalImage: { type: String, required: true },
-  images: { type: Array, required: true },
-  amount: { type: Number, required: true }
+  images: { type: Array, default: [] },
+  amount: { type: Number, required: true },
+  animeName: { type: String, required: true }
 }, { timestamps: true });
 
 export default model('Figure', figureSchema);

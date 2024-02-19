@@ -1,0 +1,38 @@
+import { createUserAsAdmin, updateUserAsAdmin, deleteUserAsAdmin } from "../services/admin/admin-service";
+
+export async function createUserAsAdminController(req, res, next) {
+  try {
+    const body = req.body;
+    const user = await createUserAsAdmin(body);
+    res.status(201).send(user);
+  } catch (error){
+    if(error.code = 11000){
+      error.status = 409;
+    }
+    if(error.message.includes('validation')){
+      error.status = 400;
+    }
+    next(error);
+  }
+}
+
+export async function updateUserAsAdminController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    const updatedUser = await updateUserAsAdmin(id, body);
+    res.status(200).send(updatedUser);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function deleteUserAsAdminController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const deletedUser = await deleteUserAsAdmin(id);
+    res.status(200).send(deletedUser);
+  } catch(error){
+    next(error);
+  }
+}

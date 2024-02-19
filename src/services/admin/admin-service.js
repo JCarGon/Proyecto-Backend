@@ -2,33 +2,7 @@ import { User } from '../../models/index.js'
 import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
 
-export async function getUsers(filters){
-  const { name } = filters;
-  const query = {
-    username: name ? new RegExp(name, 'i'): undefined,
-    //expresión regular para buscar si algún nombre de usuario contiene el introducido en el filters
-  };
-
-  const cleanedQuery = Object.fromEntries(
-    Object.entries(query).filter(([_, a]) => a !== undefined)
-  );
-  const users = await User.find(cleanedQuery).select('-password -__v');
-
-  return users;
-}
-
-export async function getUser(id) {
-  const user = await User.findById(id);
-  if(!user) throw HttpStatusError(404, `User not found`);
-  return user;
-}
-
-export async function getUserByEmail(email) {
-  const user = await User.findOne({ email });
-  return user;
-};
-
-export async function createUser(user) {
+export async function createUserAsAdmin(user) {
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   const passwordRegex = /^[a-zA-Z0-9]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,13 +30,7 @@ export async function createUser(user) {
   return createUser;
 }
 
-export async function deleteUser(id){
-  const deletedUser = await User.findByIdAndDelete(id);
-  if(!deletedUser) throw HttpStatusError(404, `User not found`);
-  return deletedUser;
-}
-
-export async function updateUser(id, body){
+export async function updateUserAsAdmin(id, body){
   const user = await User.findOne({ _id: id });
 
   if (!user) throw HttpStatusError(404, `User not found`);
@@ -75,10 +43,8 @@ export async function updateUser(id, body){
   return updatedUser;
 }
 
-export async function deleteToken(headers){
-  headers.authorization = '';
-  const msg = {
-    msg: 'Log out'
-  }
-  return(msg);
+export async function deleteUserAsAdmin(id) {
+  const deletedUser = await User.findByIdAndDelete(id);
+  if(!deletedUser) throw HttpStatusError(404, `User not found`);
+  return deletedUser;
 }
