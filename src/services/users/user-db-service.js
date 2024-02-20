@@ -2,26 +2,10 @@ import { User } from '../../models/index.js'
 import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
 
-export async function getUsers(filters){
-  const { name } = filters;
-  const query = {
-    username: name ? new RegExp(name, 'i'): undefined,
-    //expresión regular para buscar si algún nombre de usuario contiene el introducido en el filters
-  };
-
-  const cleanedQuery = Object.fromEntries(
-    Object.entries(query).filter(([_, a]) => a !== undefined)
-  );
-  const users = await User.find(cleanedQuery).select('-password -__v');
-
-  return users;
-}
-
-export async function getUser(id) {
-  const user = await User.findById(id);
-  if(!user) throw HttpStatusError(404, `User not found`);
+export async function getUserById(id) {
+  const user = await User.findById(id).populate('favouritesFigures');
   return user;
-}
+};
 
 export async function getUserByEmail(email) {
   const user = await User.findOne({ email });
@@ -56,13 +40,13 @@ export async function createUser(user) {
   return createUser;
 }
 
-export async function deleteUser(id){
+export async function deleteMe(id){
   const deletedUser = await User.findByIdAndDelete(id);
   if(!deletedUser) throw HttpStatusError(404, `User not found`);
   return deletedUser;
 }
 
-export async function updateUser(id, body){
+export async function updateMe(id, body){
   const user = await User.findOne({ _id: id });
 
   if (!user) throw HttpStatusError(404, `User not found`);
@@ -81,4 +65,17 @@ export async function deleteToken(headers){
     msg: 'Log out'
   }
   return(msg);
+}
+
+export async function updateUserFigures(userId, figureId) {
+  const user = await User.findOne({ _id: userId });
+  if (!user) throw HttpStatusError(404, `User not found`);
+
+   user.favouritesFigures.includes(figureId);
+  // user.favouritesFigures.includes(mongoose.Types.ObjectId(figureId));
+  //if() throw HttpStatusError(409, 'Figure already exists');
+  user.favouritesFigures.push(figureId);
+
+  const updatedUser = await user.save();
+  return updatedUser;
 }

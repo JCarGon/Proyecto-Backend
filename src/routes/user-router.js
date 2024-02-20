@@ -1,16 +1,14 @@
 import { Router } from 'express';
-import { getUsersController, getUserController, createUserController, deleteUserController, getUserMe, updateUserController, deleteTokenController } from '../controllers/user-controller.js';
+import { getUserMe, createUserController, deleteMeController, updateMeController, addFigureToCartController, removeFigureFromCartController } from '../controllers/user-controller.js';
 import { checkToken } from '../middlewares/auth-middleware.js';
-import { validatorUserId } from '../middlewares/userValidator-middleware.js';
 
 const router = Router();
 
-router.get('/', getUsersController);
-router.get('/:id', getUserController);
 router.get('/me', checkToken, getUserMe);
 router.post('/', createUserController);
-router.delete('/:id', checkToken, validatorUserId ,deleteUserController);
-router.patch('/:id', checkToken, validatorUserId, updateUserController);
-router.post('/logout', checkToken, deleteTokenController);
+router.patch('/me', checkToken, updateMeController);
+router.delete('/me', checkToken, deleteMeController);
+router.post('/figures/:id', checkToken, addFigureToCartController); //usar req.user.id y id de /anime/figures/:id
+router.delete('/figures/:id', checkToken, removeFigureFromCartController); //TO DO
 
 export default router;

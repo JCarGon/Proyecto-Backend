@@ -2,6 +2,26 @@ import { User } from '../../models/index.js'
 import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
 
+export async function getUsers(filters){
+  const { name } = filters;
+  const query = {
+    username: name ? new RegExp(name, 'i'): undefined,
+  };
+
+  const cleanedQuery = Object.fromEntries(
+    Object.entries(query).filter(([_, a]) => a !== undefined)
+  );
+  const users = await User.find(cleanedQuery).select('-password -__v');
+
+  return users;
+}
+
+export async function getUser(id) {
+  const user = await User.findById(id);
+  if(!user) throw HttpStatusError(404, `User not found`);
+  return user;
+}
+
 export async function createUserAsAdmin(user) {
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   const passwordRegex = /^[a-zA-Z0-9]+$/;

@@ -1,4 +1,23 @@
-import { createUserAsAdmin, updateUserAsAdmin, deleteUserAsAdmin } from "../services/admin/admin-service";
+import { getUsers, getUser, createUserAsAdmin, updateUserAsAdmin, deleteUserAsAdmin } from "../services/admin/admin-service.js";
+
+export async function getUsersController(req, res, next) {
+  try {
+    const users = await getUsers(req.query);
+    res.status(200).send(users);
+  } catch (error){
+    next(error);
+  }
+}
+
+export async function getUserController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const user = await getUser(id);
+    res.status(200).send(user);
+  } catch (error){
+    next(error);
+  }
+}
 
 export async function createUserAsAdminController(req, res, next) {
   try {

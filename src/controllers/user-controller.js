@@ -1,27 +1,9 @@
-import { getUsers, getUser, getUserByEmail, createUser, deleteUser, updateUser, deleteToken } from "../services/users/user-db-service.js";
-
-export async function getUsersController(req, res, next) {
-  try {
-    const users = await getUsers(req.query);
-    res.status(200).send(users);
-  } catch (error){
-    next(error);
-  }
-}
-
-export async function getUserController(req, res, next) {
-  try {
-    const { id } = req.params;
-    const user = await getUser(id);
-    res.status(200).send(user);
-  } catch (error){
-    next(error);
-  }
-}
+import { getUserById, createUser, deleteMe, updateMe, deleteToken, updateUserFigures } from "../services/users/user-db-service.js";
 
 export async function getUserMe(req, res, next){
   try {
-    const user = await getUserByEmail(req.user.email);
+    const id = req.user.id;
+    const user = await getUserById(id);
     return res.send(user);
   } catch (error) {
     next(error);
@@ -44,23 +26,23 @@ export async function createUserController(req, res, next) {
   }
 }
 
-export async function deleteUserController(req, res, next) {
+export async function updateMeController(req, res, next){
   try {
-    const { id } = req.params;
-    const deletedUser = await deleteUser(id);
-    res.status(200).send(deletedUser);
-  } catch(error){
+    const { id } = req.user.id;
+    const body = req.body;
+    const updatedUser = await updateMe(id, body);
+    res.status(200).send(updatedUser);
+  } catch (error) {
     next(error);
   }
 }
 
-export async function updateUserController(req, res, next){
+export async function deleteMeController(req, res, next) {
   try {
-    const { id } = req.params;
-    const body = req.body;
-    const updatedUser = await updateUser(id, body);
-    res.status(200).send(updatedUser);
-  } catch (error) {
+    const { id } = req.user.id;
+    const deletedUser = await deleteMe(id);
+    res.status(200).send(deletedUser);
+  } catch(error){
     next(error);
   }
 }
@@ -72,4 +54,19 @@ export async function deleteTokenController(req, res, next){
   } catch(error) {
     next(error);
   }
+}
+
+export async function addFigureToCartController(req, res, next) {
+  try {
+    const { id } = req.user;
+    const figureId = req.params.id;
+    const updatedUser = await updateUserFigures(id, figureId);
+    return res.status(200).send(updatedUser);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function removeFigureFromCartController(req, res, next, figureId) {
+
 }
