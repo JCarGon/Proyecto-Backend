@@ -8,7 +8,7 @@ router.get('/me', checkToken, getUserMe);
 router.post('/', createUserController);
 router.patch('/me', checkToken, updateMeController);
 router.delete('/me', checkToken, deleteMeController);
-router.post('/figures/:id', checkToken, addFigureToCartController); //usar req.user.id y id de /anime/figures/:id
+router.post('/figures/:id', checkToken, addFigureToCartController);
 router.delete('/figures/:id', checkToken, removeFigureFromCartController); //TO DO
 
 export default router;

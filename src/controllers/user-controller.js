@@ -1,4 +1,4 @@
-import { getUserById, createUser, deleteMe, updateMe, deleteToken, updateUserFigures } from "../services/users/user-db-service.js";
+import { getUserById, createUser, deleteMe, updateMe, deleteToken, updateUserFigure, deleteUserFigure } from "../services/users/user-db-service.js";
 
 export async function getUserMe(req, res, next){
   try {
@@ -60,13 +60,20 @@ export async function addFigureToCartController(req, res, next) {
   try {
     const { id } = req.user;
     const figureId = req.params.id;
-    const updatedUser = await updateUserFigures(id, figureId);
+    const updatedUser = await updateUserFigure(id, figureId);
     return res.status(200).send(updatedUser);
   } catch (error) {
     next(error);
   }
 }
 
-export async function removeFigureFromCartController(req, res, next, figureId) {
-
+export async function removeFigureFromCartController(req, res, next) {
+  try {
+    const { id } = req.user;
+    const figureId = req.params.id;
+    const deletedFigure = await deleteUserFigure(id, figureId);
+    res.status(200).send(deletedFigure);
+  } catch(error){
+    next(error);
+  }
 }

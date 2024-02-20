@@ -3,7 +3,7 @@ import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
 
 export async function getUserById(id) {
-  const user = await User.findById(id).populate('favouritesFigures');
+  const user = await User.findById(id).populate('favouritesFigures', 'name price principalImage');
   return user;
 };
 
@@ -67,15 +67,21 @@ export async function deleteToken(headers){
   return(msg);
 }
 
-export async function updateUserFigures(userId, figureId) {
+export async function updateUserFigure(userId, figureId) {
   const user = await User.findOne({ _id: userId });
   if (!user) throw HttpStatusError(404, `User not found`);
-
-   user.favouritesFigures.includes(figureId);
-  // user.favouritesFigures.includes(mongoose.Types.ObjectId(figureId));
-  //if() throw HttpStatusError(409, 'Figure already exists');
+  if(user.favouritesFigures.includes(figureId)) throw HttpStatusError(409, 'Figure already exists');
   user.favouritesFigures.push(figureId);
-
   const updatedUser = await user.save();
   return updatedUser;
+}
+
+export async function deleteUserFigure(userId, figureId) {
+  const user = await User.findOne({ _id: userId });
+  if (!user) throw HttpStatusError(404, `User not found`);
+  if(!user.favouritesFigures.includes(figureId)) throw HttpStatusError(404, 'Figure not exists');
+  const index = user.favouritesFigures.indexOf(figureId);
+  user.favouritesFigures.splice(index, 1);
+  const userUpdated = await user.save();
+  return userUpdated;
 }
