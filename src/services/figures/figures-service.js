@@ -16,7 +16,7 @@ export async function createFigure(figureData) {
 }
 
 export async function getFigures(filters) {
-  const { name, character, company, price, dimensions, material, brand, amount, animeName } = filters;
+  const { name, character, company, price, dimensions, material, brand, amount, animeName, page, pageSize } = filters;
   const query = {};
   if (name) query.name = new RegExp(name, 'i');
   if (character) query.character = new RegExp(character, 'i');
@@ -30,7 +30,17 @@ export async function getFigures(filters) {
   const cleanedQuery = Object.fromEntries(
     Object.entries(query).filter(([_, a]) => a !== undefined && a !== null)
   );
-  const figures = await Figure.find(cleanedQuery).select('-__v');
+
+  const actualPage = parseInt(filters.page) || 1;
+  const actualPageSize = parseInt(filters.pageSize) || 10;
+
+  const skip = (actualPage - 1) * actualPageSize;
+
+  const figures = await Figure.find(cleanedQuery)
+    .select('-__v')
+    .skip(skip)
+    .limit(actualPageSize);
+
   return figures;
 }
 
