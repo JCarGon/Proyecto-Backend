@@ -1,4 +1,4 @@
-import { getUserById, createUser, deleteMe, updateMe, deleteToken, updateUserFigure, deleteUserFigure } from "../services/users/user-db-service.js";
+import { getUserById, createUser, deleteMe, updateMe, deleteToken, updateUserFigure, deleteUserFigure, buyFigures } from "../services/users/user-db-service.js";
 
 export async function getUserMe(req, res, next){
   try {
@@ -73,6 +73,17 @@ export async function removeFigureFromCartController(req, res, next) {
     const figureId = req.params.id;
     const deletedFigure = await deleteUserFigure(id, figureId);
     res.status(200).send(deletedFigure);
+  } catch(error){
+    next(error);
+  }
+}
+
+export async function buyFiguresController(req, res, next) {
+  try{
+    const { id } = req.user;
+    const body = req.body;
+    const purchaseObject = await buyFigures(id, body);
+    res.status(204).send(purchaseObject);
   } catch(error){
     next(error);
   }

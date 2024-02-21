@@ -1,4 +1,5 @@
 import { User } from '../../models/index.js'
+import { HistoricalShopping } from '../../models/index.js';
 import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
 
@@ -84,4 +85,21 @@ export async function deleteUserFigure(userId, figureId) {
   user.favouritesFigures.splice(index, 1);
   const userUpdated = await user.save();
   return userUpdated;
+}
+
+export async function buyFigures(id, body) {
+  const purchase = {
+    userId: id,
+    products: [{
+      productId: '',
+      price: 0
+    }]
+  }
+  for(let i=0; i<body.arrayProducts; i++){
+    purchase.products[i].productId = body.arrayProducts[i]._id;
+    purchase.products[i].price = body.arrayProducts[i].price;
+  }
+  const purchaseDoc = new HistoricalShopping(purchase);
+  const purchaseObject = await purchaseDoc.save();
+  return purchaseObject;
 }

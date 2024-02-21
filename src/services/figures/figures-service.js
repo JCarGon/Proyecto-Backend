@@ -16,16 +16,21 @@ export async function createFigure(figureData) {
 }
 
 export async function getFigures(filters) {
-  const { name } = filters;
-  const query = {
-    name: name ? new RegExp(name, 'i'): undefined,
-  };
-
+  const { name, character, company, price, dimensions, material, brand, amount, animeName } = filters;
+  const query = {};
+  if (name) query.name = new RegExp(name, 'i');
+  if (character) query.character = new RegExp(character, 'i');
+  if (company) query.company = new RegExp(company, 'i');
+  if (price) query.price = price;
+  if (dimensions) query.dimensions = new RegExp(dimensions, 'i');
+  if (material) query.material = new RegExp(material, 'i');
+  if (brand) query.brand = new RegExp(brand, 'i');
+  if (amount) query.amount = amount;
+  if (animeName) query.animeName = new RegExp(animeName, 'i');
   const cleanedQuery = Object.fromEntries(
-    Object.entries(query).filter(([_, a]) => a !== undefined)
+    Object.entries(query).filter(([_, a]) => a !== undefined && a !== null)
   );
   const figures = await Figure.find(cleanedQuery).select('-__v');
-
   return figures;
 }
 

@@ -1,14 +1,13 @@
 import { Router } from 'express';
-import { getUserMe, createUserController, deleteMeController, updateMeController, addFigureToCartController, removeFigureFromCartController } from '../controllers/user-controller.js';
-import { checkToken } from '../middlewares/auth-middleware.js';
+import { getUserMe, deleteMeController, updateMeController, addFigureToCartController, removeFigureFromCartController, buyFiguresController } from '../controllers/user-controller.js';
 
 const router = Router();
 
-router.get('/me', checkToken, getUserMe);
-router.post('/', createUserController);
-router.patch('/me', checkToken, updateMeController);
-router.delete('/me', checkToken, deleteMeController);
-router.post('/figures/:id', checkToken, addFigureToCartController);
-router.delete('/figures/:id', checkToken, removeFigureFromCartController); //TO DO
+router.get('/me', getUserMe);
+router.patch('/me', updateMeController);
+router.delete('/me', deleteMeController);
+router.post('/figures/:id', addFigureToCartController);
+router.delete('/figures/:id', removeFigureFromCartController);
+router.post('/buy', buyFiguresController); //Revisar cuando carrito esté hecho en front
 
 export default router;
