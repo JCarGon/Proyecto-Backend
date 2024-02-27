@@ -2,6 +2,7 @@ import { User } from '../../models/index.js'
 import { HistoricalShopping } from '../../models/index.js';
 import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
+import { getFigure } from '../figures/figures-service.js';
 
 export async function getUserById(id) {
   const user = await User.findById(id).populate('favouritesFigures', 'name price principalImage');
@@ -68,16 +69,18 @@ export async function deleteToken(headers){
   return(msg);
 }
 
-export async function updateUserFigure(userId, figureId) {
+export async function addFigureToCart(userId, figureId) {
   const user = await User.findOne({ _id: userId });
   if (!user) throw HttpStatusError(404, `User not found`);
   if(user.favouritesFigures.includes(figureId)) throw HttpStatusError(409, 'Figure already exists');
+  const figure = await getFigure(figureId);
+  if(figure.amount === 0) throw HttpStatusError(400, 'There is no stock');
   user.favouritesFigures.push(figureId);
   const updatedUser = await user.save();
   return updatedUser;
 }
 
-export async function deleteUserFigure(userId, figureId) {
+export async function deleteFigureFromCart(userId, figureId) {
   const user = await User.findOne({ _id: userId });
   if (!user) throw HttpStatusError(404, `User not found`);
   if(!user.favouritesFigures.includes(figureId)) throw HttpStatusError(404, 'Figure not exists');
@@ -87,19 +90,28 @@ export async function deleteUserFigure(userId, figureId) {
   return userUpdated;
 }
 
-export async function buyFigures(id, body) {
+export async function confirmOrder(id) {
+  const user = await getUserById(id);
   const purchase = {
     userId: id,
-    products: [{
-      productId: '',
-      price: 0
-    }]
+    products: [],
+    totalPrice: 0
   }
-  for(let i=0; i<body.arrayProducts; i++){
-    purchase.products[i].productId = body.arrayProducts[i]._id;
-    purchase.products[i].price = body.arrayProducts[i].price;
+  const figures = user.favouritesFigures;
+  for(let i=0; i<figures.length; i++) {
+    const figure = await getFigure(figures[i].id);
+    figure.amount = figure.amount-1;
+    await figure.save();
+    const object = {
+      productId: figure._id,
+      price: figure.price
+    };
+    purchase.products.push(object);
+    purchase.totalPrice = purchase.totalPrice + figure.price;
   }
   const purchaseDoc = new HistoricalShopping(purchase);
-  const purchaseObject = await purchaseDoc.save();
-  return purchaseObject;
+  await purchaseDoc.save();
+  user.favouritesFigures = [];
+  await user.save();
+  return user;
 }

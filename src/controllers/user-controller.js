@@ -1,4 +1,4 @@
-import { getUserById, createUser, deleteMe, updateMe, deleteToken, updateUserFigure, deleteUserFigure, buyFigures } from "../services/users/user-db-service.js";
+import { getUserById, createUser, deleteMe, updateMe, deleteToken, addFigureToCart, deleteFigureFromCart, confirmOrder } from "../services/users/user-db-service.js";
 
 export async function getUserMe(req, res, next){
   try {
@@ -60,7 +60,7 @@ export async function addFigureToCartController(req, res, next) {
   try {
     const { id } = req.user;
     const figureId = req.params.id;
-    const updatedUser = await updateUserFigure(id, figureId);
+    const updatedUser = await addFigureToCart(id, figureId);
     return res.status(200).send(updatedUser);
   } catch (error) {
     next(error);
@@ -71,20 +71,19 @@ export async function removeFigureFromCartController(req, res, next) {
   try {
     const { id } = req.user;
     const figureId = req.params.id;
-    const deletedFigure = await deleteUserFigure(id, figureId);
+    const deletedFigure = await deleteFigureFromCart(id, figureId);
     res.status(200).send(deletedFigure);
   } catch(error){
     next(error);
   }
 }
 
-export async function buyFiguresController(req, res, next) {
-  try{
+export async function confirmOrderController(req, res, next) {
+  try {
     const { id } = req.user;
-    const body = req.body;
-    const purchaseObject = await buyFigures(id, body);
-    res.status(204).send(purchaseObject);
-  } catch(error){
+    const user = await confirmOrder(id);
+    res.status(200).send(user);
+  } catch (error) {
     next(error);
   }
 }

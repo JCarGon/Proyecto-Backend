@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUserMe, deleteMeController, updateMeController, addFigureToCartController, removeFigureFromCartController, buyFiguresController } from '../controllers/user-controller.js';
+import { getUserMe, deleteMeController, updateMeController, addFigureToCartController, removeFigureFromCartController, confirmOrderController } from '../controllers/user-controller.js';
 
 const router = Router();
 
@@ -8,6 +8,6 @@ router.patch('/me', updateMeController);
 router.delete('/me', deleteMeController);
 router.post('/figures/:id', addFigureToCartController);
 router.delete('/figures/:id', removeFigureFromCartController);
-router.post('/buy', buyFiguresController); //Revisar cuando carrito esté hecho en front
+router.post('/confirmOrder', confirmOrderController);
 
 export default router;

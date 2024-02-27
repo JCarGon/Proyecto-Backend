@@ -11,9 +11,4 @@ const historicalShopSchema = new Schema({
   totalPrice: { type: Number, required: true }
 }, { timestamps: true });
 
-historicalShopSchema.pre('save', function(next) {
-  this.totalPrice = this.products.reduce((total, item) => total + item.price)
-  next();
-})
-
 export default model('HistoricalShopping', historicalShopSchema);
