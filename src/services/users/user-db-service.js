@@ -37,6 +37,7 @@ export async function createUser(user) {
   const exists = await User.findOne({ $or: [{ username: user.username }, { email: user.email }] });
   if (exists) throw { message: 'Username or email already exists', status: 400 };
   user.password = await encryptPassword(user.password);
+  user.rol = 'user';
   const userDoc = new User(user);
   const createUser = await userDoc.save();
   return createUser;
