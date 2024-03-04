@@ -72,6 +72,11 @@ export async function updateMe(id, body) {
   const user = await User.findOne({ _id: id });
   if (!user) throw HttpStatusError(404, `User not found`);
 
+  if (body.username) {
+    const exists = await User.findOne({ username: body.username });
+    if (exists) throw HttpStatusError(409, 'Username already exists');
+  }
+
   const usernameRegex = /^[a-zA-Z0-9]{5,20}$/;
   const passwordRegex = /^[a-zA-Z0-9]{6,20}$/;
   const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$/;
@@ -111,11 +116,6 @@ export async function updateMe(id, body) {
       }
       user[key] = value;
     }
-  }
-
-  if (body.username) {
-    const exists = await User.findOne({ username: body.username });
-    if (exists) throw HttpStatusError(409, 'Username already exists');
   }
 
   const updatedUser = await user.save();
