@@ -57,18 +57,39 @@ export async function getFigure(id) {
   return figure;
 }
 
-export async function updateFigure(id, body){
+export async function updateFigure(id, body) {
   const figure = await Figure.findOne({ _id: id });
 
   if (!figure) throw HttpStatusError(404, `Figure not found`);
+
+  const alphanumericRegex = /^[A-Za-záéíóúÁÉÍÓÚ0-9\s.-]+$/i;
+  const alphanumericFields = ['name', 'character', 'company', 'dimensions', 'material', 'brand', 'principalImage', 'animeName'];
+
   for (const key in body) {
     if (body.hasOwnProperty(key)) {
+      if (alphanumericFields.includes(key)) {
+        if (body[key] && !alphanumericRegex.test(body[key])) {
+          throw HttpStatusError(400, `Field '${key}' must contain only alphanumeric characters, including spaces, periods, and hyphens.`);
+        }
+      }
+      if (key === 'price' || key === 'amount') {
+        if (typeof body[key] !== 'number' || body[key] <= 0) {
+          throw HttpStatusError(400, `Field '${key}' must be a number greater than 0`);
+        }
+      }
       figure[key] = body[key];
     }
   }
+
+  if (body.name) {
+    const exists = await Figure.findOne({ _id: { $ne: id }, name: body.name });
+    if (exists) throw HttpStatusError(400, 'Figure name already exists');
+  }
+
   const updatedFigure = await figure.save();
   return updatedFigure;
 }
+
 
 export async function deleteFigure(id) {
   const deletedFigure = await Figure.findByIdAndDelete(id);

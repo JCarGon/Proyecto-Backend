@@ -28,7 +28,7 @@ export async function createUserController(req, res, next) {
 
 export async function updateMeController(req, res, next){
   try {
-    const { id } = req.user.id;
+    const id = req.user.id;
     const body = req.body;
     const updatedUser = await updateMe(id, body);
     res.status(200).send(updatedUser);
