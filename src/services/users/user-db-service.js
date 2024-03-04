@@ -164,14 +164,14 @@ export async function confirmOrder(id, address) {
   for(let i=0; i<figures.length; i++) {
     const figure = await getFigure(figures[i].id);
     figure.amount = figure.amount-1;
-    await figure.save();
     const object = {
       productId: figure._id,
       figureName: figure.name,
       price: (figure.price*discount)
     };
     purchase.products.push(object);
-    purchase.totalPrice = Number(purchase.totalPrice + (figure.price * discount)).toFixed(2);
+    purchase.totalPrice = Number(Number(purchase.totalPrice) + (figure.price * discount)).toFixed(2);
+    await figure.save();
   }
   const purchaseDoc = new HistoricalShopping(purchase);
   await purchaseDoc.save();
