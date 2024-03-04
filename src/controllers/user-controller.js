@@ -16,7 +16,7 @@ export async function createUserController(req, res, next) {
     const user = await createUser(body);
     res.status(201).send(user);
   } catch (error){
-    if(error.code = 11000){
+    if(error.code === 11000){
       error.status = 409;
     }
     if(error.message.includes('validation')){

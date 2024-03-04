@@ -6,7 +6,7 @@ export async function createFigureController(req, res, next) {
     const figure = await createFigure(body);
     res.status(201).send(figure);
   } catch (error){
-    if(error.code = 11000){
+    if(error.code === 11000){
       error.status = 409;
     }
     if(error.message.includes('validation')){
