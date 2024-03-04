@@ -81,7 +81,8 @@ export async function removeFigureFromCartController(req, res, next) {
 export async function confirmOrderController(req, res, next) {
   try {
     const { id } = req.user;
-    const user = await confirmOrder(id);
+    const address = req.body.address;
+    const user = await confirmOrder(id, address);
     res.status(200).send(user);
   } catch (error) {
     next(error);

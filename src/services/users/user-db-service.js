@@ -37,7 +37,6 @@ export async function createUser(user) {
   const exists = await User.findOne({ $or: [{ username: user.username }, { email: user.email }] });
   if (exists) throw { message: 'Username or email already exists', status: 400 };
   user.password = await encryptPassword(user.password);
-  user.rol = 'user';
   const userDoc = new User(user);
   const createUser = await userDoc.save();
   return createUser;
@@ -91,10 +90,12 @@ export async function deleteFigureFromCart(userId, figureId) {
   return userUpdated;
 }
 
-export async function confirmOrder(id) {
+export async function confirmOrder(id, address) {
+  const discount = 0.8;
   const user = await getUserById(id);
   const purchase = {
     userId: id,
+    shippingAddress: address,
     products: [],
     totalPrice: 0
   }
@@ -105,10 +106,11 @@ export async function confirmOrder(id) {
     await figure.save();
     const object = {
       productId: figure._id,
-      price: figure.price
+      figureName: figure.name,
+      price: (figure.price*discount)
     };
     purchase.products.push(object);
-    purchase.totalPrice = purchase.totalPrice + figure.price;
+    purchase.totalPrice = Number(purchase.totalPrice + (figure.price * discount)).toFixed(2);
   }
   const purchaseDoc = new HistoricalShopping(purchase);
   await purchaseDoc.save();
