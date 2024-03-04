@@ -15,18 +15,38 @@ export async function getUserByEmail(email) {
 };
 
 export async function createUser(user) {
-  const usernameRegex = /^[a-zA-Z0-9]+$/;
-  const passwordRegex = /^[a-zA-Z0-9]+$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const usernameRegex = /^[a-zA-Z0-9]{5,20}$/;
+  const passwordRegex = /^[a-zA-Z0-9]{6,20}$/;
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i;
+  const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$/;
+  const addressRegex = /^c\/\s.+,\s\d+$/;
+  const cpRegex = /^\d{5}$/;
+  const cityRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$/;
+  const tlfRegex = /^\d{9}$/;
 
   if (!user.username.match(usernameRegex)) {
-    throw { message: 'Username only contains letters and numbers', status: 400 };
+    throw HttpStatusError(400, `Username must be between 5 and 20 alphanumeric characters`);
   }
   if (!user.password.match(passwordRegex)) {
-    throw { message: 'Password only contains letters and numbers', status: 400 };
+    throw HttpStatusError(400, `Password must be between 6 and 20 alphanumeric characters`);
   }
   if (!user.email.match(emailRegex)) {
-    throw { message: 'Email must be "prueba@prueba.com"', status: 400 };
+    throw HttpStatusError(400, `Email format must be "correo@correo.com"`);
+  }
+  if (!user.name.match(nameRegex)) {
+    throw HttpStatusError(400, `Name must be between 6 and 20 alphabetic characters`);
+  }
+  if (user.address && !user.address.match(addressRegex)) {
+    throw HttpStatusError(400, `Address must follow the format "c/ ..., number"`);
+  }
+  if (!user.cp.match(cpRegex)) {
+    throw HttpStatusError(400, `Postal code must contain exactly 5 digits`);
+  }
+  if (!user.city.match(cityRegex)) {
+    throw HttpStatusError(400, `City must be between 4 and 20 alphabetic characters`);
+  }
+  if (!user.tlf.match(tlfRegex)) {
+    throw HttpStatusError(400, `Phone number must contain exactly 9 digits`);
   }
   const requiredFields = ['username', 'password', 'name', 'email', 'address', 'cp', 'city', 'tlf'];
   for (const field of requiredFields) {
@@ -35,11 +55,11 @@ export async function createUser(user) {
     }
   }
   const exists = await User.findOne({ $or: [{ username: user.username }, { email: user.email }] });
-  if (exists) throw { message: 'Username or email already exists', status: 400 };
+  if (exists) throw { message: 'Username or email already exists', status: 409 };
   user.password = await encryptPassword(user.password);
   const userDoc = new User(user);
-  const createUser = await userDoc.save();
-  return createUser;
+  const createdUser = await userDoc.save();
+  return createdUser;
 }
 
 export async function deleteMe(id){

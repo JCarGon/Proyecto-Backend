@@ -9,7 +9,7 @@ const userSchema = new Schema({
   rol: { type: String, default: 'user' },
   name: { type: String, required: true },
   address: { type: String, required: true },
-  cp: { type: Number, required: true },
+  cp: { type: String, required: true },
   city: { type: String, required: true },
   tlf: { type: String, required: true },
   favouritesFigures: [{ type: Schema.Types.ObjectId, ref: 'Figure' }]
