@@ -72,13 +72,54 @@ export async function createUserAsAdmin(user) {
 
 export async function updateUserAsAdmin(id, body){
   const user = await User.findOne({ _id: id });
-
   if (!user) throw HttpStatusError(404, `User not found`);
+
+  if (body.username) {
+    const exists = await User.findOne({ username: body.username });
+    if (exists) throw HttpStatusError(409, 'Username already exists');
+  }
+
+  const usernameRegex = /^[a-zA-Z0-9]{5,20}$/;
+  const passwordRegex = /^[a-zA-Z0-9]{6,20}$/;
+  const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$/;
+  const addressRegex = /^c\/\s.+,\s\d+$/;
+  const cpRegex = /^\d{5}$/;
+  const cityRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$/;
+  const tlfRegex = /^\d{9}$/;
+
   for (const key in body) {
     if (body.hasOwnProperty(key)) {
-      user[key] = body[key];
+      let value = body[key];
+      switch (key) {
+        case 'username':
+          if (!usernameRegex.test(value)) throw HttpStatusError(400, `Username must be between 5 and 20 alphanumeric characters`);
+          break;
+        case 'password':
+          if (!passwordRegex.test(value)) throw HttpStatusError(400, `Password must be between 6 and 20 alphanumeric characters`);
+          value = await encryptPassword(user.password);
+          break;
+        case 'email':
+          throw HttpStatusError(400, `Email can't be modify`);
+        case 'name':
+          if (!nameRegex.test(value)) throw HttpStatusError(400, `Name must be between 6 and 20 alphabetic characters`);
+          break;
+        case 'address':
+          if (!addressRegex.test(value)) throw HttpStatusError(400, `Address must follow the format "c/ ..., number"`);
+          break;
+        case 'cp':
+          if (!cpRegex.test(value)) throw HttpStatusError(400, `Postal code must contain exactly 5 digits`);
+          break;
+        case 'city':
+          if (!cityRegex.test(value)) throw HttpStatusError(400, `City must be between 4 and 20 alphabetic characters`);
+          break;
+        case 'tlf':
+          if (!tlfRegex.test(value)) throw HttpStatusError(400, `Phone number must contain exactly 9 digits`);
+          break;
+      }
+      user[key] = value;
     }
   }
+
   const updatedUser = await user.save();
   return updatedUser;
 }
