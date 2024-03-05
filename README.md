@@ -2,7 +2,7 @@
 
 Esta API está diseñada para consultar, crear, modificar y/o eliminar usuarios y figuras de anime mediante peticiones en un servidor creado con express. Dichos usuarios y figuras se crearán en una base de datos mongo desplegada en mongoDB Atlas.
 
-Unida al front hecho con React y CSS, tenemos la aplicación web de 'Frikilevel?, la cual es una simulación de tienda online a través de la cual se pueden realizar pedidos o compras de figuras de diferentes animes mediante una interfaz para el usuario.
+Unida al front hecho con React y CSS, tenemos la aplicación web de 'Frikilevel', la cual es una simulación de tienda online a través de la cual se pueden realizar pedidos o compras de figuras de diferentes animes mediante una interfaz para el usuario.
 
 > [!CAUTION]
 > Para utilizar esta API se necesitará crear un archvo .env con variables de entorno, las cuales deberás contactar con el administrador de esta API, ya que encontrarás las variables necesarias en el archivo '.env.template', pero no encontrarás el contenido de las variables.
@@ -46,13 +46,13 @@ Se han utilizado middlewares para:
 En esta API se podrá realizar las siguientes peticiones:
 - Login para registrarte y obtener autenticación para ciertas peticiones.
 - Logout para cerrar sesión y eliminar el token.
-- Listar las figuras existentes.
-- Listar una sola figura con todos sus atributos.
 - Listar todos los usuarios.
 - Listar un usuario con todos sus atributos.
 - Crear, modificar o eliminar un usuario (haciendo diferencia entre user y admin):
   - Si eres user solo podrás modificar o eliminar tu usuario.
-  - Si eres admin, podrás modificar o eliminar cualquier usuario.
+  - Si eres admin, podrás modificar o eliminar cualquier usuario, además de crear otro usuario 'admin'.
+- Listar las figuras existentes.
+- Listar una sola figura con todos sus atributos.
 - Crear, modificar o eliminar una figura (solo si eres admin).
 
 La información sobre cada una de las peticiones que se pueden hacer a la API la encontrarás en el **swagger**, el cual:
@@ -71,6 +71,6 @@ Previamente, cada ruta pasa por su controlador ('en el directorio './src/control
 - '/figures/figures-service.js': contiene la lógica de las peticiones GET para obtener información de las figuras.
 - '/users/user-db-service.js': contiene la lógica para las peticiones que pueden realizarse sobre el usuario que tiene una sesión activa.
 
-## Postman collection
+## Postman
 
 Encontrarás los archivos necesarios para importar, tanto la colección de postman con las peticiones creadas y listas para ejecutarse ('Frikilevel-API.postman_collection.json'), como el archivo que contiene el entorno ('Frikilevel-API.postman_environment') en './Postman/'.
