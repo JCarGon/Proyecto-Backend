@@ -1,0 +1,1141 @@
+openapi: 3.1.0
+info:
+  version: "1.0.0"
+  title: "Frikilevel API"
+paths:
+  /v1/login:
+    post:
+      summary: "Login User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                email:
+                  type: "string"
+                password:
+                  type: "string"
+            example:
+              email: "user@example.com"
+              password: "password123"
+      responses:
+        '200':
+          description: "Successful Login"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  token:
+                    type: "string"
+        '401':
+          description: "Invalid credentials"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    example: "Invalid credentials"
+
+  /v1/logout:
+    post:
+      summary: "Logout User"
+      responses:
+        '200':
+          description: "Successful Logout"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    example: "User logged out successfully"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "string"
+                    example: "Internal Server Error"
+
+  /v1/figures:
+    get:
+      summary: "Get Figures"
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: "Filter by figure name"
+        - in: query
+          name: character
+          schema:
+            type: string
+          description: "Filter by character name"
+        - in: query
+          name: company
+          schema:
+            type: string
+          description: "Filter by company"
+        - in: query
+          name: price
+          schema:
+            type: string
+          description: "Filter by price"
+        - in: query
+          name: dimensions
+          schema:
+            type: string
+          description: "Filter by dimensions"
+        - in: query
+          name: material
+          schema:
+            type: string
+          description: "Filter by material"
+        - in: query
+          name: brand
+          schema:
+            type: string
+          description: "Filter by brand"
+        - in: query
+          name: amount
+          schema:
+            type: integer
+          description: "Filter by amount available"
+        - in: query
+          name: animeName
+          schema:
+            type: string
+          description: "Filter by associated anime name"
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: "Page number for pagination"
+          required: false
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+          description: "Number of items per page for pagination"
+          required: false
+      responses:
+        '200':
+          description: "List of figures"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Figure'
+
+  /v1/figures/{id}:
+    get:
+      summary: "Get Figure by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the figure to retrieve"
+      responses:
+        '200':
+          description: "Detailed figure information"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Figure'
+        '404':
+          description: "Figure not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure not found"
+
+  /v1/users:
+    post:
+      summary: "Create User"
+      description: "Creates a new user with the given details."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  pattern: "^[a-zA-Z0-9]{5,20}$"
+                  description: "Username must be between 5 and 20 alphanumeric characters."
+                password:
+                  type: string
+                  pattern: "^[a-zA-Z0-9]{6,20}$"
+                  description: "Password must be between 6 and 20 alphanumeric characters."
+                email:
+                  type: string
+                  pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+                  description: 'Email must be valid and follow the format "correo@correo.com".'
+                name:
+                  type: string
+                  pattern: "^[A-Za-záéíóúÁÉÍÓÚ\\s]{6,20}$"
+                  description: "Name must be between 6 and 20 alphabetic characters."
+                address:
+                  type: string
+                  pattern: "^c/\\s.+,\\s\\d+$"
+                  description: 'Address must follow the format "c/ ..., number". Optional field.'
+                cp:
+                  type: string
+                  pattern: "^\\d{5}$"
+                  description: "Postal code must contain exactly 5 digits."
+                city:
+                  type: string
+                  pattern: "^[A-Za-záéíóúÁÉÍÓÚ\\s]{4,20}$"
+                  description: "City must be between 4 and 20 alphabetic characters."
+                tlf:
+                  type: string
+                  pattern: "^\\d{9}$"
+                  description: "Phone number must contain exactly 9 digits."
+              required:
+                - username
+                - password
+                - email
+                - name
+                - address
+                - cp
+                - city
+                - tlf
+      responses:
+        '201':
+          description: "User created successfully."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User created successfully."
+        '400':
+          description: "Validation error for one or more fields."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Validation error message."
+        '409':
+          description: "Username or email already exists."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Username or email already exists."
+
+  /v1/users/me:
+    get:
+      summary: "Get User Profile"
+      description: "Retrieve the profile information of the currently authenticated user."
+      operationId: "getUserProfile"
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Successful retrieval of user profile."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: "Unauthorized. Token is invalid or expired."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    example: "Unauthorized. Please login again."
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "string"
+                    example: "Internal Server Error"
+
+    patch:
+      summary: "Update Current User"
+      description: "Allows the current user to update their profile information except for their email."
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  pattern: "^[a-zA-Z0-9]{5,20}$"
+                  description: "Username must be between 5 and 20 alphanumeric characters. Optional, but if provided, must be unique."
+                password:
+                  type: string
+                  pattern: "^[a-zA-Z0-9]{6,20}$"
+                  description: "Password must be between 6 and 20 alphanumeric characters. Optional."
+                name:
+                  type: string
+                  pattern: "^[A-Za-záéíóúÁÉÍÓÚ\\s]{6,20}$"
+                  description: "Name must be between 6 and 20 alphabetic characters. Optional."
+                address:
+                  type: string
+                  pattern: "^c/\\s.+,\\s\\d+$"
+                  description: 'Address must follow the format "c/ ..., number". Optional.'
+                cp:
+                  type: string
+                  pattern: "^\\d{5}$"
+                  description: "Postal code must contain exactly 5 digits. Optional."
+                city:
+                  type: string
+                  pattern: "^[A-Za-záéíóúÁÉÍÓÚ\\s]{4,20}$"
+                  description: "City must be between 4 and 20 alphabetic characters. Optional."
+                tlf:
+                  type: string
+                  pattern: "^\\d{9}$"
+                  description: "Phone number must contain exactly 9 digits. Optional."
+              required: []
+      responses:
+        '200':
+          description: "User profile updated successfully."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: "Validation error for one or more fields."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Validation error message."
+        '404':
+          description: "User not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '409':
+          description: "Username already exists."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Username already exists."
+
+    delete:
+      summary: "Delete User Account"
+      description: "Deletes the currently authenticated user's account."
+      operationId: "deleteUserAccount"
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "User account successfully deleted."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User account successfully deleted."
+        '401':
+          description: "Unauthorized. Token is invalid or missing."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "User not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+
+  /v1/users/figures/{id}:
+    post:
+      summary: "Add Figure to Favourites"
+      description: "Adds a specified figure to the user's favourites or cart."
+      operationId: "addFigureToFavourites"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the figure to add to favourites."
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Figure added to favourites successfully."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure added to favourites successfully."
+        '400':
+          description: "There is no stock for the requested figure."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "There is no stock."
+        '401':
+          description: "Unauthorized. Token is invalid or missing."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "Not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '409':
+          description: "Figure already exists in favourites."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure already exists in favourites."
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+
+    delete:
+      summary: "Remove Figure from Favourites"
+      description: "Removes a specified figure from the user's favourites or cart."
+      operationId: "removeFigureFromFavourites"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the figure to remove from favourites."
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Figure removed from favourites successfully."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure removed from favourites successfully."
+        '401':
+          description: "Unauthorized. Token is invalid or missing."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "User not found or figure does not exist in favourites."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure does not exist in favourites."
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+
+  /v1/users/confirmOrder:
+    post:
+      summary: "Confirm Order"
+      description: "Confirms the order for the currently authenticated user, using their favourite figures list as the order items."
+      operationId: "confirmOrder"
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: "Shipping address for the order."
+              required:
+                - address
+      responses:
+        '200':
+          description: "Order confirmed successfully. The user's favourites list is cleared, and a new purchase record is created."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Order confirmed successfully. Your favourites list has been cleared."
+        '401':
+          description: "Unauthorized. Token is invalid or missing."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "User not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '500':
+          description: "Internal Server Error or unable to complete the order due to stock issues."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error or stock issue."
+
+  /v1/admin/users:
+    get:
+      summary: "Get Users List"
+      description: "Retrieves a list of users, optionally filtered by name."
+      operationId: "getUsersList"
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: "Optional name to filter the users by."
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "A list of users."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAdmin'
+        '401':
+          description: "Unauthorized. Token is invalid or missing."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+
+    post:
+      summary: "Create User as Admin"
+      description: "Creates a new user with detailed validations for each field."
+      operationId: "createUserAsAdmin"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  pattern: '^[a-zA-Z0-9]{5,20}$'
+                password:
+                  type: string
+                  pattern: '^[a-zA-Z0-9]{6,20}$'
+                email:
+                  type: string
+                  pattern: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+                name:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$'
+                address:
+                  type: string
+                  pattern: '^c/\\s.+,\\s\\d+$'
+                  description: "Optional"
+                cp:
+                  type: string
+                  pattern: '^\d{5}$'
+                city:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$'
+                tlf:
+                  type: string
+                  pattern: '^\d{9}$'
+              required:
+                - username
+                - password
+                - email
+                - name
+                - cp
+                - city
+                - tlf
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: "User created successfully."
+        '400':
+          description: "Validation error."
+        '409':
+          description: "Username or email already exists."
+        '401':
+          description: "Unauthorized access."
+
+  /v1/admin/users/{id}:
+    get:
+      summary: "Get User Details"
+      description: "Retrieves details of a specific user by ID."
+      operationId: "getUserDetails"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the user to retrieve."
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "User details retrieved successfully."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAdmin'
+        '401':
+          description: "Unauthorized. Token is invalid or missing."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "User not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+
+    patch:
+      summary: "Update User as Admin"
+      description: "Allows an admin to update details for a specific user. Certain fields have validations and the email cannot be modified."
+      operationId: "updateUserAsAdmin"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the user to update."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  pattern: '^[a-zA-Z0-9]{5,20}$'
+                  description: "Username must be between 5 and 20 alphanumeric characters."
+                password:
+                  type: string
+                  pattern: '^[a-zA-Z0-9]{6,20}$'
+                  description: "Password must be between 6 and 20 alphanumeric characters. Will be encrypted."
+                name:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$'
+                  description: "Name must be between 6 and 20 alphabetic characters."
+                address:
+                  type: string
+                  pattern: '^c/\\s.+,\\s\\d+$'
+                  description: 'Address must follow the format "c/ ..., number".'
+                cp:
+                  type: string
+                  pattern: '^\\d{5}$'
+                  description: "Postal code must contain exactly 5 digits."
+                city:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$'
+                  description: "City must be between 4 and 20 alphabetic characters."
+                tlf:
+                  type: string
+                  pattern: '^\\d{9}$'
+                  description: "Phone number must contain exactly 9 digits."
+              required:
+                - username
+                - password
+                - name
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "User updated successfully."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User updated successfully."
+        '400':
+          description: "Validation error or attempt to modify email."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Validation error message."
+        '404':
+          description: "User not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '409':
+          description: "Username already exists."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Username already exists."
+        '401':
+          description: "Unauthorized access."
+        '500':
+          description: "Internal Server Error."
+
+    delete:
+      summary: "Delete User as Admin"
+      description: "Allows an admin to delete a specific user by ID."
+      operationId: "deleteUserAsAdmin"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the user to be deleted."
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "User successfully deleted."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User successfully deleted."
+        '401':
+          description: "Unauthorized access."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "User not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found."
+        '500':
+          description: "Internal Server Error."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error."
+
+  /v1/admin/figures:
+    post:
+      summary: "Create Figure as Admin"
+      description: "Creates a new figure with the provided data, ensuring all fields meet alphanumeric requirements."
+      operationId: "createFigureAsAdmin"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                character:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                company:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                dimensions:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                material:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                brand:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                principalImage:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                animeName:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                price:
+                  type: number
+                  minimum: 0.01
+                amount:
+                  type: number
+                  minimum: 1
+              required:
+                - name
+                - character
+                - company
+                - dimensions
+                - material
+                - brand
+                - principalImage
+                - animeName
+                - price
+                - amount
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: "Figure created successfully."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure created successfully."
+        '400':
+          description: "Validation error on one or more fields."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Validation error for field 'X'."
+        '401':
+          description: "Unauthorized access."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '500':
+          description: "Internal Server Error."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error."
+
+  /v1/admin/figures/{id}:
+    patch:
+      summary: "Update Figure as Admin"
+      description: "Updates an existing figure with the provided data, ensuring all fields meet specific requirements."
+      operationId: "updateFigureAsAdmin"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the figure to update."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                character:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                company:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                dimensions:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                material:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                brand:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                principalImage:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                animeName:
+                  type: string
+                  pattern: '^[A-Za-záéíóúÁÉÍÓÚ0-9\\s.-]+$'
+                price:
+                  type: number
+                  minimum: 0.01
+                amount:
+                  type: number
+                  minimum: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Figure updated successfully."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure updated successfully."
+        '400':
+          description: "Validation error on one or more fields, or figure name already exists."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Validation error for field 'X'."
+        '401':
+          description: "Unauthorized access."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized. Please login again."
+        '404':
+          description: "Figure not found."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Figure not found."
+        '500':
+          description: "Internal Server Error."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error."
+
+    delete:
+      summary: "Delete Figure as Admin"
+      description: "Deletes a specific figure by ID."
+      operationId: "deleteFigureAsAdmin"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: "The ID of the figure to delete."
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Figure deleted successfully."
+        '404':
+          description: "Figure not found."
+        '401':
+          description: "Unauthorized access."
+        '500':
+          description: "Internal Server Error."
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

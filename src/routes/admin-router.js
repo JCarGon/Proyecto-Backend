@@ -5,8 +5,8 @@ import { createFigureController, updateFigureController, deleteFigureController 
 const router = Router();
 
 router.get('/users', getUsersController);
-router.get('/:id', getUserController);
 router.post('/users', createUserAsAdminController);
+router.get('/users/:id', getUserController);
 router.patch('/users/:id', updateUserAsAdminController);
 router.delete('/users/:id', deleteUserAsAdminController);
 
