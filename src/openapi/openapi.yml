@@ -1131,6 +1131,184 @@ paths:
           description: "Internal Server Error."
 
 components:
+  schemas:
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: "User's email address, unique across the system."
+        password:
+          type: string
+          format: password
+          description: "User's password for authentication."
+        username:
+          type: string
+          description: "User's unique username."
+        rol:
+          type: string
+          default: 'user'
+          description: "User's role within the system."
+        name:
+          type: string
+          description: "User's full name."
+        address:
+          type: string
+          description: "User's address."
+        cp:
+          type: string
+          description: "User's postal code."
+        city:
+          type: string
+          description: "User's city."
+        tlf:
+          type: string
+          description: "User's telephone number."
+        favouritesFigures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Figure'
+          description: "List of user's favourite figures."
+      required:
+        - email
+        - password
+        - username
+        - name
+        - address
+        - cp
+        - city
+        - tlf
+      example:
+        email: "user@example.com"
+        password: "SecurePassword123"
+        username: "user123"
+        rol: "user"
+        name: "John Doe"
+        address: "123 Main St"
+        cp: "12345"
+        city: "Anytown"
+        tlf: "123456789"
+        favouritesFigures: []
+
+    Figure:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Name of the figure."
+        character:
+          type: string
+          description: "Character the figure represents."
+        company:
+          type: string
+          description: "Company that manufactures the figure."
+        price:
+          type: number
+          format: float
+          description: "Price of the figure."
+        dimensions:
+          type: string
+          description: "Dimensions of the figure."
+        material:
+          type: string
+          description: "Material of the figure."
+        brand:
+          type: string
+          description: "Brand of the figure."
+        principalImage:
+          type: string
+          description: "Primary image of the figure."
+        images:
+          type: array
+          items:
+            type: string
+          description: "Array of image URLs for the figure."
+        amount:
+          type: number
+          format: int32
+          description: "Available stock for the figure."
+        animeName:
+          type: string
+          description: "Anime associated with the figure."
+      required:
+        - name
+        - character
+        - company
+        - price
+        - dimensions
+        - material
+        - brand
+        - principalImage
+        - amount
+        - animeName
+      example:
+        name: "Figure Name"
+        character: "Character Name"
+        company: "Company Name"
+        price: 99.99
+        dimensions: "10x5x5"
+        material: "PVC"
+        brand: "Brand Name"
+        principalImage: "http://example.com/image.jpg"
+        images: ["http://example.com/image1.jpg", "http://example.com/image2.jpg"]
+        amount: 100
+        animeName: "Anime Name"
+
+    HistoricalShopping:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: "Reference to the User who made the purchase."
+        shippingAddress:
+          type: string
+          description: "Shipping address for the order."
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: "List of products in the shopping history."
+        totalPrice:
+          type: number
+          format: float
+          description: "Total price of the order."
+      required:
+        - userId
+        - shippingAddress
+        - products
+        - totalPrice
+      example:
+        userId: "507f1f77bcf86cd799439011"
+        shippingAddress: "123 Main St, Anytown, USA"
+        products:
+          - productId: "507f1f77bcf86cd799439011"
+            figureName: "Super Action Figure"
+            price: 29.99
+        totalPrice: 59.98
+
+    Product:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: "Reference to the Figure being purchased."
+        figureName:
+          type: string
+          description: "Name of the figure."
+        price:
+          type: number
+          format: float
+          description: "Price of the figure in the order."
+      required:
+        - productId
+        - figureName
+        - price
+      example:
+        productId: "507f1f77bcf86cd799439011"
+        figureName: "Super Action Figure"
+        price: 29.99
+
   securitySchemes:
     bearerAuth:
       type: http
