@@ -3,7 +3,7 @@ import { getFiguresController, getFigureController } from '../controllers/figure
 
 const router = Router();
 
-router.get('/', getFiguresController); //Add filters
+router.get('/', getFiguresController);
 router.get('/:id', getFigureController);
 
 export default router;

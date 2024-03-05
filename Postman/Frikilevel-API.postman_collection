@@ -1,0 +1,614 @@
+{
+	"info": {
+		"_postman_id": "d513eab4-76be-4ee7-8d89-71970cad9750",
+		"name": "Frikilevel API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31187331"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get User Me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/me",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@user.com\",\r\n    \"password\": \"user1234\",\r\n    \"username\": \"normalUser\",\r\n    \"name\": \"Paquito Paco\",\r\n    \"address\": \"c/ Rarete, 10\",\r\n    \"cp\": \"41085\",\r\n    \"city\": \"Almería\",\r\n    \"tlf\": \"157824957\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Prueba create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"prueba@prueba.com\",\r\n    \"password\": \"prueba1234\",\r\n    \"username\": \"a1b2c3\",\r\n    \"name\": \"Joselito Manolito\",\r\n    \"address\": \"c/ inventada, 16\",\r\n    \"cp\": \"41085\",\r\n    \"city\": \"Leon\",\r\n    \"tlf\": \"000000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add figure to user cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f94a987f8ac2dd1e18e",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users",
+								"figures",
+								"65d64f94a987f8ac2dd1e18e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove figure to user cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f94a987f8ac2dd1e18e",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users",
+								"figures",
+								"65d64f94a987f8ac2dd1e18e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/confirmOrder",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users",
+								"confirmOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Me",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"normalUser1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/me",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "GET Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User as Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\",\r\n    \"username\": \"adminDAW\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"Jesus\",\r\n    \"address\": \"c/ Inventada, 5\",\r\n    \"cp\": 41005,\r\n    \"city\": \"Sevilla\",\r\n    \"tlf\": 658745952\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"normalUser\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users/65e61a97e11a5d4d34b9f2ae",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"users",
+								"65e61a97e11a5d4d34b9f2ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users/65e5b30a89242b9eb213825e",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"users",
+								"65e5b30a89242b9eb213825e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Figure",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Figura de prueba\",\r\n    \"character\": \"Manolín\",\r\n    \"company\": \"Manolo y Benito\",\r\n    \"price\": 125,\r\n    \"dimensions\": \"20x20cm\",\r\n    \"material\": \"pvc\",\r\n    \"brand\": \"Bandai\",\r\n    \"principalImage\": \"image1.webp\",\r\n    \"amount\": 50,\r\n    \"animeName\": \"ManoloYBenito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"figures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Figure",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"character\": \"Benito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures/65e61265364c2f768949e689",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"figures",
+								"65e61265364c2f768949e689"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Figure",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures/65e61265364c2f768949e689",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"figures",
+								"65e61265364c2f768949e689"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Figures",
+			"item": [
+				{
+					"name": "Get Figures",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/figures?name=changes",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"figures"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "changes"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Figure",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/figures/65e61265364c2f768949e689",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"figures",
+								"65e61265364c2f768949e689"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Capture and store token in environment variable', function () {\r",
+							"    const responseBody = pm.response.json();\r",
+							"    const token = responseBody.token;\r",
+							"\r",
+							"    postman.setEnvironmentVariable('token', token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiURL}}/{{ApiVersion}}/login",
+					"host": [
+						"{{ApiURL}}"
+					],
+					"path": [
+						"{{ApiVersion}}",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Capture and delete token', function () {\r",
+							"    postman.setEnvironmentVariable('token', '');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{ApiURL}}/{{ApiVersion}}/logout",
+					"host": [
+						"{{ApiURL}}"
+					],
+					"path": [
+						"{{ApiVersion}}",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Figure (Operation)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const body = pm.iterationData.toObject();\r",
+							"pm.variables.set('body', JSON.stringify(body))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('201 Created', function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})\r",
+							"\r",
+							"const body = pm.response.json();\r",
+							"const {_id} = body;\r",
+							"pm.environment.set('id', _id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures",
+					"host": [
+						"{{ApiURL}}"
+					],
+					"path": [
+						"{{ApiVersion}}",
+						"admin",
+						"figures"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
