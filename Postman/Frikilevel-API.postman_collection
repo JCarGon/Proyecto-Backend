@@ -11,6 +11,19 @@
 			"item": [
 				{
 					"name": "Get User Me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -36,6 +49,19 @@
 				},
 				{
 					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('201 Created', function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -62,34 +88,20 @@
 					"response": []
 				},
 				{
-					"name": "Prueba create user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"prueba@prueba.com\",\r\n    \"password\": \"prueba1234\",\r\n    \"username\": \"a1b2c3\",\r\n    \"name\": \"Joselito Manolito\",\r\n    \"address\": \"c/ inventada, 16\",\r\n    \"cp\": \"41085\",\r\n    \"city\": \"Leon\",\r\n    \"tlf\": \"000000000\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users",
-							"host": [
-								"{{ApiURL}}"
-							],
-							"path": [
-								"{{ApiVersion}}",
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Add figure to user cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -100,7 +112,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f94a987f8ac2dd1e18e",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f93a987f8ac2dd1e170",
 							"host": [
 								"{{ApiURL}}"
 							],
@@ -108,7 +120,7 @@
 								"{{ApiVersion}}",
 								"users",
 								"figures",
-								"65d64f94a987f8ac2dd1e18e"
+								"65d64f93a987f8ac2dd1e170"
 							]
 						}
 					},
@@ -116,6 +128,19 @@
 				},
 				{
 					"name": "Remove figure to user cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -126,7 +151,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f94a987f8ac2dd1e18e",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f93a987f8ac2dd1e170",
 							"host": [
 								"{{ApiURL}}"
 							],
@@ -134,7 +159,7 @@
 								"{{ApiVersion}}",
 								"users",
 								"figures",
-								"65d64f94a987f8ac2dd1e18e"
+								"65d64f93a987f8ac2dd1e170"
 							]
 						}
 					},
@@ -142,6 +167,19 @@
 				},
 				{
 					"name": "Confirm Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -151,6 +189,15 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"shippingAddress\": \"c/ Rarete, 10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{ApiURL}}/{{ApiVersion}}/users/confirmOrder",
 							"host": [
@@ -206,6 +253,19 @@
 			"item": [
 				{
 					"name": "GET Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -231,6 +291,23 @@
 				},
 				{
 					"name": "Create User as Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('201 Created', function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"})\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"const {_id} = body;\r",
+									"postman.setEnvironmentVariable('idUser', _id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -242,7 +319,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\",\r\n    \"username\": \"adminDAW\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"Jesus\",\r\n    \"address\": \"c/ Inventada, 5\",\r\n    \"cp\": 41005,\r\n    \"city\": \"Sevilla\",\r\n    \"tlf\": 658745952\r\n}",
+							"raw": "{\r\n    \"email\": \"prueba@prueba.com\",\r\n    \"password\": \"prueba1234\",\r\n    \"username\": \"userPrueba\",\r\n    \"rol\": \"user\",\r\n    \"name\": \"Manolito\",\r\n    \"address\": \"c/ Rarete, 10\",\r\n    \"cp\": \"42758\",\r\n    \"city\": \"Jaén\",\r\n    \"tlf\": \"658745952\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -265,6 +342,19 @@
 				},
 				{
 					"name": "Modify User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -284,7 +374,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users/65e61a97e11a5d4d34b9f2ae",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users/{{idUser}}",
 							"host": [
 								"{{ApiURL}}"
 							],
@@ -292,7 +382,7 @@
 								"{{ApiVersion}}",
 								"admin",
 								"users",
-								"65e61a97e11a5d4d34b9f2ae"
+								"{{idUser}}"
 							]
 						}
 					},
@@ -300,6 +390,23 @@
 				},
 				{
 					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test('Capture and delete idUser', function () {\r",
+									"    postman.setEnvironmentVariable('idUser', '');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -310,7 +417,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users/65e5b30a89242b9eb213825e",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/users/{{idUser}}",
 							"host": [
 								"{{ApiURL}}"
 							],
@@ -318,7 +425,7 @@
 								"{{ApiVersion}}",
 								"admin",
 								"users",
-								"65e5b30a89242b9eb213825e"
+								"{{idUser}}"
 							]
 						}
 					},
@@ -326,6 +433,23 @@
 				},
 				{
 					"name": "Create Figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('201 Created', function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"})\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"const {_id} = body;\r",
+									"postman.setEnvironmentVariable('idFigure', _id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -360,6 +484,19 @@
 				},
 				{
 					"name": "Modify Figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -379,7 +516,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures/65e61265364c2f768949e689",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures/{{idFigure}}",
 							"host": [
 								"{{ApiURL}}"
 							],
@@ -387,7 +524,7 @@
 								"{{ApiVersion}}",
 								"admin",
 								"figures",
-								"65e61265364c2f768949e689"
+								"{{idFigure}}"
 							]
 						}
 					},
@@ -395,6 +532,23 @@
 				},
 				{
 					"name": "Delete Figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test('Capture and delete idFigure', function () {\r",
+									"    postman.setEnvironmentVariable('idFigure', '');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -405,7 +559,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures/65e61265364c2f768949e689",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/figures/{{idFigure}}",
 							"host": [
 								"{{ApiURL}}"
 							],
@@ -413,7 +567,7 @@
 								"{{ApiVersion}}",
 								"admin",
 								"figures",
-								"65e61265364c2f768949e689"
+								"{{idFigure}}"
 							]
 						}
 					},
@@ -426,23 +580,30 @@
 			"item": [
 				{
 					"name": "Get Figures",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/figures?name=changes",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/figures",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
 								"figures"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "changes"
-								}
 							]
 						}
 					},
@@ -450,18 +611,31 @@
 				},
 				{
 					"name": "Get Figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/figures/65e61265364c2f768949e689",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/figures/{{idFigure}}",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
 								"figures",
-								"65e61265364c2f768949e689"
+								"{{idFigure}}"
 							]
 						}
 					},
@@ -476,6 +650,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test('200 OK', function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
 							"pm.test('Capture and store token in environment variable', function () {\r",
 							"    const responseBody = pm.response.json();\r",
 							"    const token = responseBody.token;\r",
@@ -519,6 +697,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test('200 OK', function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
 							"pm.test('Capture and delete token', function () {\r",
 							"    postman.setEnvironmentVariable('token', '');\r",
 							"});"
