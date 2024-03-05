@@ -12,19 +12,19 @@ Unida al front hecho con React y CSS, tenemos la aplicación web de 'Frikilevel'
 > ~~~
 > npm install
 > ~~~
->Hay veces que no las instala todas y hay que instalar alguna de manera concreta con:
+>Una vez instaladas, ejecutar npm start para ejecutar la aplicación usando _Nodemon_:
 > ~~~
-> npm install 'dependency-name'
+> npm start
 > ~~~
 
 ## Routes
 
-- Las diferentes rutas de la API las podrás encontrar en './src/routes/index.js'.
+- Las diferentes rutas de la API las podrás encontrar en [./src/routes/index.js](./src/routes/index.js).
 - En el mismo directorio, encontrarás:
-  - un archivo 'admin-router.js' que contiene peticiones para gestionar usuarios y figuras como admin a diferentes endpoints, pasando primero por '/admin'.
-  - un archivo 'figure-router.js' que contiene peticiones GET para listar varias figuras o una sola figura, realizando peticiones a los endpoints '/figures'.
-  - un archivo 'misc-router.js' que contiene una petición a '/ping' que sirve para comprobar si está recibiendo y respondiendo peticiones.
-  - un archivo 'user-router' que contiene peticiones para gestionar al usuario activo, pasando primero por '/users'.
+  - Un archivo [admin-router.js](./src/routes/admin-router.js) que contiene peticiones para gestionar usuarios y figuras como admin a diferentes endpoints, pasando primero por _/admin_.
+  - Un archivo [figure-router.js](./src/routes/figure-router.js) que contiene peticiones GET para listar varias figuras o una sola figura, realizando peticiones a los endpoints _/figures_.
+  - Un archivo [misc-router.js](./src/routes/misc-router.js) que contiene una petición a _/ping_ que sirve para comprobar si está recibiendo y respondiendo peticiones.
+  - Un archivo [user-router](./src/routes/user-router.js) que contiene peticiones para gestionar al usuario activo, pasando primero por '/users'.
 
 > [!NOTE]
 > Encontrarás ciertos métodos que requieren de autorización/autenticación.
@@ -34,12 +34,12 @@ Esta autorización/autenticación ha sido generada con JsonWebToken (JWT), utili
 ## Middlewares
 
 > [!NOTE]
-> Los encontrarás en el directorio './src/middlewares/'.
+> Los encontrarás en el directorio [./src/middlewares/](./src/middlewares/).
 
 Se han utilizado middlewares para:
-- 'admin-middleware.js': comprobar si quien está haciendo la petición es admin (para las peticiones que necesitan esta autenticación).
-- 'auth-middleware.js': autenticar el token con JWT (comprobar si ha sido generado correctamente y si no ha expirado).
-- 'error-middleware.js': control de error genérico para los Internal Server Error (status code 500).
+- [admin-middleware.js](./src/middlewares/admin-middleware.js): comprobar si quien está haciendo la petición es admin (para las peticiones que necesitan esta autenticación).
+- [auth-middleware.js](./src/middlewares/auth-middleware.js): autenticar el token con JWT (comprobar si ha sido generado correctamente y si no ha expirado).
+- [error-middleware.js](./src/middlewares/error-middleware.js): control de error genérico para los Internal Server Error (status code 500).
 
 ## Peticiones
 
@@ -56,8 +56,8 @@ En esta API se podrá realizar las siguientes peticiones:
 - Crear, modificar o eliminar una figura (solo si eres admin).
 
 La información sobre cada una de las peticiones que se pueden hacer a la API la encontrarás en el **swagger**, el cual:
-- Está ubicado en './src/openapi/openapi.yml'.
-- Una vez arrancado el servidor en local, deberás entrar a 'localhost:PORT/api-docs' (indicado en './src/loaders/express-loader.js').
+- Está ubicado en [./src/openapi/openapi.yml](./src/openapi/openapi.yml).
+- Una vez arrancado el servidor en local, deberás entrar a `localhost:PORT/api-docs` (indicado en [./src/loaders/express-loader.js](./src/loaders/express-loader.js)).
 > [!IMPORTANT]
 > El Swagger aún está en proceso
 
@@ -66,11 +66,11 @@ La información sobre cada una de las peticiones que se pueden hacer a la API la
 > [!NOTE]
 > Los encontrarás en el directorio './src/services/'.
 
-Previamente, cada ruta pasa por su controlador ('en el directorio './src/controllers/'), quien las deriva al servicio correspondiente. Estos, se encuentran en './src/services/', donde hay:
-- '/admin/admin-service.js': contiene la lógica de todas las peticiones que puede realizar un usuario admin.
-- '/figures/figures-service.js': contiene la lógica de las peticiones GET para obtener información de las figuras.
-- '/users/user-db-service.js': contiene la lógica para las peticiones que pueden realizarse sobre el usuario que tiene una sesión activa.
+Previamente, cada ruta pasa por su controlador ('en el directorio [./src/controllers/](./src/controllers/)), quien las deriva al servicio correspondiente. Estos, se encuentran en [./src/services/](./src/services/), donde hay:
+- [admin-service.js](./src/services/admin/admin-service.js): contiene la lógica de todas las peticiones que puede realizar un usuario admin.
+- [figures-service.js](./src/services/figures/figures-service.js): contiene la lógica de las peticiones GET para obtener información de las figuras.
+- [user-db-service.js](./src/services/users/user-db-service.js): contiene la lógica para las peticiones que pueden realizarse sobre el usuario que tiene una sesión activa.
 
 ## Postman
 
-Encontrarás los archivos necesarios para importar, tanto la colección de postman con las peticiones creadas y listas para ejecutarse ('Frikilevel-API.postman_collection.json'), como el archivo que contiene el entorno ('Frikilevel-API.postman_environment') en './Postman/'.
+Encontrarás los archivos necesarios para importar, tanto la colección de postman con las peticiones creadas y listas para ejecutarse ([Frikilevel-API.postman_collection.json](./postman/Frikilevel-API.postman_collection)), como el archivo que contiene el entorno ([Frikilevel-API.postman_environment](./postman/Frikilevel-API.postman_environment.json)) en [./Postman/](./postman/).
