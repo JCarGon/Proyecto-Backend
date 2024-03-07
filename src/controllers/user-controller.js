@@ -39,7 +39,7 @@ export async function updateMeController(req, res, next){
 
 export async function deleteMeController(req, res, next) {
   try {
-    const { id } = req.user.id;
+    const id = req.user.id;
     const deletedUser = await deleteMe(id);
     res.status(200).send(deletedUser);
   } catch(error){
