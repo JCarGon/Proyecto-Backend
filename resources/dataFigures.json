@@ -21,7 +21,7 @@
     "material": "PVC",
     "brand": "Bandai",
     "principalImage": "AOT2-1.webp",
-    "images": ["AOT2-2.webp", "AOT2-3.webp", "AOT2-4.webp", "AOT2-5.webp"],
+    "images": ["AOT2-2.webp", "AOT2-3.webp", "AOT2-4.webp"],
     "amount": 100,
     "animeName": "AttackOnTitan"
   },
@@ -60,7 +60,7 @@
     "material": "PVC",
     "brand": "Pop Up Parade L",
     "principalImage": "AOT5-1.webp",
-    "images": ["AOT5-2.webp", "AOT5-3.webp", "AOT5-4.webp", "AOT5-5.webp"],
+    "images": ["AOT5-2.webp", "AOT5-3.webp", "AOT5-4.webp"],
     "amount": 100,
     "animeName": "AttackOnTitan"
   },
@@ -138,7 +138,7 @@
     "material": "resina",
     "brand": "Bandai",
     "principalImage": "DBZ1-1.webp",
-    "images": ["DBZ1-2.webp", "DBZ1-3.webp", "DBZ1-4.webp", "DBZ1-5.webp"],
+    "images": ["DBZ1-2.webp", "DBZ1-3.webp", "DBZ1-4.webp"],
     "amount": 100,
     "animeName": "DragonBallZ"
   },
@@ -164,7 +164,7 @@
     "material": "PVC",
     "brand": "Bandai",
     "principalImage": "DBZ3-1.webp",
-    "images": ["DBZ3-2.webp", "DBZ3-3.webp", "DBZ3-4.webp", "DBZ3-5.webp"],
+    "images": ["DBZ3-2.webp", "DBZ3-3.webp", "DBZ3-4.webp"],
     "amount": 100,
     "animeName": "DragonBallZ"
   },
@@ -775,7 +775,7 @@
     "material": "PVC",
     "brand": "Megahouse",
     "principalImage": "OP10-1.webp",
-    "images": ["OP10-2.webp", "OP10-3.webp", "OP10-4.webp", "OP10-5.webp"],
+    "images": ["OP10-2.webp", "OP10-3.webp", "OP10-4.webp"],
     "amount": 100,
     "animeName": "OnePiece"
   }
