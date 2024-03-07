@@ -2,13 +2,9 @@ import { Figure } from '../../models/index.js'
 import { HttpStatusError } from 'common-errors';
 
 export async function createFigure(figureData) {
-  const alphanumericRegex = /^[A-Za-záéíóúÁÉÍÓÚ0-9\s.-]+$/i;
   const alphanumericFields = ['name', 'character', 'company', 'dimensions', 'material', 'brand', 'principalImage', 'animeName'];
   for (const field of alphanumericFields) {
     if (!figureData[field]) throw HttpStatusError(400, `Field '${field}' is required`);
-    if (!alphanumericRegex.test(figureData[field])) {
-      throw HttpStatusError(400, `Field '${field}' must contain only alphanumeric characters`);
-    }
   }
   if (typeof figureData.price !== 'number' || figureData.price <= 0) {
     throw HttpStatusError(400, `Field 'price' must be a number greater than 0`);
