@@ -11,7 +11,8 @@ export async function createFigure(figureData) {
   }
   if (typeof figureData.amount !== 'number' || figureData.amount <= 0) {
     throw HttpStatusError(400, `Field 'amount' must be a number greater than 0`);
-  }const exists = await Figure.findOne({ name: figureData.name });
+  }
+  const exists = await Figure.findOne({ name: figureData.name });
   if (exists) throw HttpStatusError(400, 'Figure name already exists');
   const figureDoc = new Figure(figureData);
   const createFigure = await figureDoc.save();

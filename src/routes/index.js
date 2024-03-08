@@ -8,12 +8,14 @@ import miscRouter from './misc-router.js';
 import userRouter from './user-router.js';
 import adminRouter from './admin-router.js';
 import figureRouter from './figure-router.js';
+import messageRouter from './message-router.js';
 
 const router = express.Router();
 
 router.post('/login', login);
 router.post('/logout', checkToken, deleteTokenController);
 router.post('/users', createUserController);
+router.use('/messages', messageRouter);
 router.use('/users', checkToken, userRouter);
 router.use('/admin', checkToken, adminChecker, adminRouter);
 router.use('/figures', figureRouter);

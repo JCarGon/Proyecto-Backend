@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getUsersController, getUserController, createUserAsAdminController, updateUserAsAdminController, deleteUserAsAdminController } from '../controllers/admin-controller.js';
 import { createFigureController, updateFigureController, deleteFigureController } from '../controllers/figure-controller.js';
+import { getMessagesController, getMessageController } from '../controllers/message-controller.js';
 
 const router = Router();
 
@@ -13,5 +14,8 @@ router.delete('/users/:id', deleteUserAsAdminController);
 router.post('/figures', createFigureController);
 router.patch('/figures/:id', updateFigureController);
 router.delete('/figures/:id', deleteFigureController);
+
+router.get('/messages', getMessagesController);
+router.get('/messages/:id', getMessageController);
 
 export default router;
