@@ -23,8 +23,14 @@ export async function createMessage(body) {
   return createdMessage;
 }
 
-export async function getMessages() {
-  const messages = await Message.find().select('-__v')
+export async function getMessages(filters) {
+  const { email } = filters;
+  const query = {};
+  if (email) query.email = new RegExp(email, 'i');
+  const cleanedQuery = Object.fromEntries(
+    Object.entries(query).filter(([_, a]) => a !== undefined && a !== null)
+  );
+  const messages = await Message.find(cleanedQuery).select('-__v')
   return messages;
 }
 

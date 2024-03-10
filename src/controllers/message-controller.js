@@ -15,7 +15,7 @@ export async function createMessageController(req, res, next) {
 
 export async function getMessagesController(req, res, next) {
   try {
-    const messages = await getMessages();
+    const messages = await getMessages(req.query);
     res.status(200).send(messages);
   } catch (error){
     next(error);
