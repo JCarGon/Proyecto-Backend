@@ -3,7 +3,7 @@ import { HttpStatusError } from 'common-errors';
 
 export async function createMessage(body) {
   const requiredFields = ['name', 'surnames', 'email', 'tlf', 'msg'];
-  const nameRegex = /^[A-Za-zÀ-ÿ]{3,20}$/;
+  const nameRegex = /^[A-Za-zÀ-ÿ\s]{3,20}$/;
   const surnamesRegex = /^[A-Za-zÀ-ÿ\s]{3,20}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const tlfRegex = /^\d{9}$/;
