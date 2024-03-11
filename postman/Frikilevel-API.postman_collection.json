@@ -171,15 +171,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f93a987f8ac2dd1e170",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/65ea1fe6aae036b335d6a602",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
-								"users",
-								"figures",
-								"65d64f93a987f8ac2dd1e170"
+								"cart",
+								"65ea1fe6aae036b335d6a602"
 							]
 						}
 					},
@@ -210,15 +209,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users/figures/65d64f93a987f8ac2dd1e170",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/65ea1fe6aae036b335d6a602",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
-								"users",
-								"figures",
-								"65d64f93a987f8ac2dd1e170"
+								"cart",
+								"65ea1fe6aae036b335d6a602"
 							]
 						}
 					},
@@ -258,13 +256,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users/confirmOrder",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/confirmOrder",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
-								"users",
+								"cart",
 								"confirmOrder"
 							]
 						}
@@ -344,7 +342,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"prueba@prueba.com\",\r\n    \"password\": \"prueba1234\",\r\n    \"username\": \"userPrueba\",\r\n    \"rol\": \"user\",\r\n    \"name\": \"Manolito\",\r\n    \"address\": \"c/ Rarete, 10\",\r\n    \"cp\": \"42758\",\r\n    \"city\": \"Jaén\",\r\n    \"tlf\": \"658745952\"\r\n}",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\",\r\n    \"username\": \"jcg93\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"Jesús\",\r\n    \"address\": \"c/ Rarete, 10\",\r\n    \"cp\": \"42758\",\r\n    \"city\": \"Sevilla\",\r\n    \"tlf\": \"658745952\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -768,7 +766,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"nombre\",\r\n    \"surnames\": \"apellido apellido\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"tlf\": \"123456789\",\r\n    \"msg\": \"Prueba de mensaje\"\r\n}",
+							"raw": "{\r\n    \"name\": \"nombre compuesto\",\r\n    \"surnames\": \"apellido apellido\",\r\n    \"email\": \"prueba@prueba.com\",\r\n    \"tlf\": \"123456789\",\r\n    \"msg\": \"Prueba de mensaje 2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
