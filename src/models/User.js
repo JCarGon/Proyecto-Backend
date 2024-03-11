@@ -12,7 +12,7 @@ const userSchema = new Schema({
   cp: { type: String, required: true },
   city: { type: String, required: true },
   tlf: { type: String, required: true },
-  favouritesFigures: [{ type: Schema.Types.ObjectId, ref: 'Figure' }]
+  userCart: [{ type: Schema.Types.ObjectId, ref: 'Figure' }]
 }, { timestamps: true });
 
 export default model('User', userSchema);

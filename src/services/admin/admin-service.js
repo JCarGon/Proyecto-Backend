@@ -26,7 +26,7 @@ export async function createUserAsAdmin(user) {
   const usernameRegex = /^[a-zA-Z0-9]{5,20}$/;
   const passwordRegex = /^[a-zA-Z0-9]{6,20}$/;
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i;
-  const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$/;
+  const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$/;
   const addressRegex = /^c\/\s.+,\s\d+$/;
   const cpRegex = /^\d{5}$/;
   const cityRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$/;
@@ -42,7 +42,7 @@ export async function createUserAsAdmin(user) {
     throw HttpStatusError(400, `Email format must be "correo@correo.com"`);
   }
   if (!user.name.match(nameRegex)) {
-    throw HttpStatusError(400, `Name must be between 6 and 20 alphabetic characters`);
+    throw HttpStatusError(400, `Name must be between 4 and 20 alphabetic characters`);
   }
   if (user.address && !user.address.match(addressRegex)) {
     throw HttpStatusError(400, `Address must follow the format "c/ ..., number"`);

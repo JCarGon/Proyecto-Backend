@@ -5,7 +5,7 @@ import { HttpStatusError } from 'common-errors';
 import { getFigure } from '../figures/figures-service.js';
 
 export async function getUserById(id) {
-  const user = await User.findById(id).populate('favouritesFigures', 'name price principalImage');
+  const user = await User.findById(id).populate('userCart', 'name price principalImage');
   return user;
 };
 
@@ -18,7 +18,7 @@ export async function createUser(user) {
   const usernameRegex = /^[a-zA-Z0-9]{5,20}$/;
   const passwordRegex = /^[a-zA-Z0-9]{6,20}$/;
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i;
-  const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{6,20}$/;
+  const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$/;
   const addressRegex = /^c\/\s.+,\s\d+$/;
   const cpRegex = /^\d{5}$/;
   const cityRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]{4,20}$/;
@@ -34,7 +34,7 @@ export async function createUser(user) {
     throw HttpStatusError(400, `Email format must be "correo@correo.com"`);
   }
   if (!user.name.match(nameRegex)) {
-    throw HttpStatusError(400, `Name must be between 6 and 20 alphabetic characters`);
+    throw HttpStatusError(400, `Name must be between 4 and 20 alphabetic characters`);
   }
   if (user.address && !user.address.match(addressRegex)) {
     throw HttpStatusError(400, `Address must follow the format "c/ ..., number"`);
@@ -133,10 +133,10 @@ export async function deleteToken(headers){
 export async function addFigureToCart(userId, figureId) {
   const user = await User.findOne({ _id: userId });
   if (!user) throw HttpStatusError(404, `User not found`);
-  if(user.favouritesFigures.includes(figureId)) throw HttpStatusError(409, 'Figure already exists');
+  if(user.userCart.includes(figureId)) throw HttpStatusError(409, 'Figure already exists');
   const figure = await getFigure(figureId);
   if(figure.amount === 0) throw HttpStatusError(400, 'There is no stock');
-  user.favouritesFigures.push(figureId);
+  user.userCart.push(figureId);
   const updatedUser = await user.save();
   return updatedUser;
 }
@@ -144,9 +144,9 @@ export async function addFigureToCart(userId, figureId) {
 export async function deleteFigureFromCart(userId, figureId) {
   const user = await User.findOne({ _id: userId });
   if (!user) throw HttpStatusError(404, `User not found`);
-  if(!user.favouritesFigures.includes(figureId)) throw HttpStatusError(404, 'Figure not exists');
-  const index = user.favouritesFigures.indexOf(figureId);
-  user.favouritesFigures.splice(index, 1);
+  if(!user.userCart.includes(figureId)) throw HttpStatusError(404, 'Figure not exists');
+  const index = user.userCart.indexOf(figureId);
+  user.userCart.splice(index, 1);
   const userUpdated = await user.save();
   return userUpdated;
 }
@@ -160,7 +160,7 @@ export async function confirmOrder(id, address) {
     products: [],
     totalPrice: 0
   }
-  const figures = user.favouritesFigures;
+  const figures = user.userCart;
   for(let i=0; i<figures.length; i++) {
     const figure = await getFigure(figures[i].id);
     figure.amount = figure.amount-1;
@@ -175,7 +175,7 @@ export async function confirmOrder(id, address) {
   }
   const purchaseDoc = new HistoricalShopping(purchase);
   await purchaseDoc.save();
-  user.favouritesFigures = [];
+  user.userCart = [];
   await user.save();
   return user;
 }
