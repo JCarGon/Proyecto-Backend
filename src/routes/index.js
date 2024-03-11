@@ -6,6 +6,7 @@ import { deleteTokenController } from '../controllers/user-controller.js';
 import { createUserController } from '../controllers/user-controller.js';
 import miscRouter from './misc-router.js';
 import userRouter from './user-router.js';
+import cartRouter from './cart-router.js';
 import adminRouter from './admin-router.js';
 import figureRouter from './figure-router.js';
 import messageRouter from './message-router.js';
@@ -17,6 +18,7 @@ router.post('/logout', checkToken, deleteTokenController);
 router.post('/users', createUserController);
 router.use('/messages', messageRouter);
 router.use('/users', checkToken, userRouter);
+router.use('/cart', checkToken, cartRouter);
 router.use('/admin', checkToken, adminChecker, adminRouter);
 router.use('/figures', figureRouter);
 
