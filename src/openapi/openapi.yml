@@ -381,7 +381,7 @@ paths:
                     type: string
                     example: "Internal Server Error"
 
-  /v1/users/figures/{id}:
+  /v1/cart/{id}:
     post:
       tags:
         - Request about user's cart
@@ -508,7 +508,7 @@ paths:
                     type: string
                     example: "Internal Server Error"
 
-  /v1/users/confirmOrder:
+  /v1/cart/confirmOrder:
     post:
       tags:
         - Request about user's cart
@@ -1186,7 +1186,7 @@ components:
         tlf:
           type: string
           description: "User's telephone number."
-        favouritesFigures:
+        userCart:
           type: array
           items:
             $ref: "#/components/schemas/Figure"
@@ -1210,7 +1210,7 @@ components:
         cp: "12345"
         city: "Anytown"
         tlf: "123456789"
-        favouritesFigures: []
+        userCart: []
 
     Figure:
       type: object
