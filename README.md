@@ -30,7 +30,7 @@ Unida al front hecho con React y CSS, tenemos la aplicación web de 'Frikilevel'
 
 - Las diferentes rutas de la API las podrás encontrar en [./src/routes/index.js](./src/routes/index.js).
 - En el mismo directorio, encontrarás:
-  - Un archivo [admin-router.js](./src/routes/admin-router.js) que contiene peticiones para gestionar usuarios y figuras como admin a diferentes endpoints, pasando primero por _/admin_.
+  - Un archivo [admin-router.js](./src/routes/admin-router.js) que contiene peticiones a diferentes endpoints para gestionar, como admin, usuarios y figuras, así como ver las compras que se han hecho y mensajes que se han mandado, pasando primero por _/admin_.
   - Un archivo [cart-router.js](./src/routes/cart-router.js) que contiene peticiones para añadir y eliminar una figura al carrito del usuario, además del endpoint para confirmar la compra.
   - Un archivo [figure-router.js](./src/routes/figure-router.js) que contiene peticiones GET para listar varias figuras o una sola figura, realizando peticiones a los endpoints _/figures_.
   - Un archivo [message-router.js](./src/routes/message-router.js) que contiene una petición para crear un nuevo mensaje.
@@ -66,7 +66,8 @@ En esta API se podrá realizar las siguientes peticiones:
 - Listar una sola figura con todos sus atributos.
 - Crear, modificar o eliminar una figura (solo si eres admin).
 - Crear un mensaje (cualquier usuario).
-- Listar uno o todos  los mensajes como administrador.
+- Listar uno o todos los mensajes como administrador.
+- Listar una o todas las compras como administrador.
 
 La información sobre cada una de las peticiones que se pueden hacer a la API la encontrarás en el **swagger**, el cual:
 - Está ubicado en [./src/openapi/openapi.yml](./src/openapi/openapi.yml).
