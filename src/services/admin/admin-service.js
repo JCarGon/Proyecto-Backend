@@ -1,4 +1,5 @@
 import { User } from '../../models/index.js'
+import { HistoricalShopping } from '../../models/index.js';
 import { encryptPassword } from "../../utils/encrypt.js";
 import { HttpStatusError } from 'common-errors';
 
@@ -128,4 +129,17 @@ export async function deleteUserAsAdmin(id) {
   const deletedUser = await User.findByIdAndDelete(id);
   if(!deletedUser) throw HttpStatusError(404, `User not found`);
   return deletedUser;
+}
+
+export async function getAllHistoricalShoppings() {
+  const purchases = await HistoricalShopping.find().select('-__v -updatedAt');
+  if(!purchases) throw HttpStatusError(404, `Purchases not found`);
+  return purchases;
+}
+
+export async function getUserHistoricalShopping(id) {
+  const purchases = await HistoricalShopping.find({ userId: id })
+  .select('-__v -updatedAt');
+  if(!purchases) throw HttpStatusError(404, `Purchases not found`);
+  return purchases;
 }
