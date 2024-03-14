@@ -1,4 +1,5 @@
-import { getUserById, createUser, deleteMe, updateMe, deleteToken, addFigureToCart, deleteFigureFromCart, confirmOrder } from "../services/users/user-db-service.js";
+import { getUserById, createUser, deleteMe, updateMe, deleteToken, addFigureToCart,
+  deleteFigureFromCart, confirmOrder, getHistoricalShoppings } from "../services/users/user-db-service.js";
 
 export async function getUserMe(req, res, next){
   try {
@@ -84,6 +85,16 @@ export async function confirmOrderController(req, res, next) {
     const address = req.body.shippingAddress;
     const user = await confirmOrder(id, address);
     res.status(200).send(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function historicalShoppingsController(req, res, next) {
+  try {
+    const { id } = req.user;
+    const purchases = await getHistoricalShoppings(id);
+    res.status(200).send(purchases);
   } catch (error) {
     next(error);
   }

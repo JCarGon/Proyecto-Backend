@@ -1,4 +1,5 @@
-import { getUsers, getUser, createUserAsAdmin, updateUserAsAdmin, deleteUserAsAdmin } from "../services/admin/admin-service.js";
+import { getUsers, getUser, createUserAsAdmin, updateUserAsAdmin, deleteUserAsAdmin,
+getAllHistoricalShoppings, getUserHistoricalShopping } from "../services/admin/admin-service.js";
 
 export async function getUsersController(req, res, next) {
   try {
@@ -52,6 +53,25 @@ export async function deleteUserAsAdminController(req, res, next) {
     const deletedUser = await deleteUserAsAdmin(id);
     res.status(200).send(deletedUser);
   } catch(error){
+    next(error);
+  }
+}
+
+export async function historicalShoppingsController(req, res, next) {
+  try {
+    const purchases = await getAllHistoricalShoppings();
+    res.status(200).send(purchases);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function userHistoricalShoppingsController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const purchases = await getUserHistoricalShopping(id);
+    res.status(200).send(purchases);
+  } catch (error){
     next(error);
   }
 }

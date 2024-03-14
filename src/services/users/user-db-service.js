@@ -179,3 +179,10 @@ export async function confirmOrder(id, address) {
   await user.save();
   return user;
 }
+
+export async function getHistoricalShoppings(id) {
+  const purchases = await HistoricalShopping.find({ userId: id })
+  .select('-__v -updatedAt');
+  if(!purchases) throw HttpStatusError(404, `Purchases not found`);
+  return purchases;
+}
