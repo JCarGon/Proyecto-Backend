@@ -10,6 +10,47 @@
 			"name": "Users",
 			"item": [
 				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('201 Created', function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@user.com\",\r\n    \"password\": \"user1234\",\r\n    \"username\": \"normalUser\",\r\n    \"name\": \"Paquito Paco\",\r\n    \"address\": \"c/ Invent, 10\",\r\n    \"cp\": \"41085\",\r\n    \"city\": \"Almería\",\r\n    \"tlf\": \"157824957\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get User Me",
 					"event": [
 						{
@@ -42,46 +83,6 @@
 								"{{ApiVersion}}",
 								"users",
 								"me"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('201 Created', function(){\r",
-									"    pm.response.to.have.status(201);\r",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"user@user.com\",\r\n    \"password\": \"user1234\",\r\n    \"username\": \"normalUser\",\r\n    \"name\": \"Paquito Paco\",\r\n    \"address\": \"c/ Rarete, 10\",\r\n    \"cp\": \"41085\",\r\n    \"city\": \"Almería\",\r\n    \"tlf\": \"157824957\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/users",
-							"host": [
-								"{{ApiURL}}"
-							],
-							"path": [
-								"{{ApiVersion}}",
-								"users"
 							]
 						}
 					},
@@ -157,7 +158,8 @@
 									"    pm.response.to.have.status(200);\r",
 									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -171,14 +173,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/65ea1fe6aae036b335d6a602",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/65ea1fe8aae036b335d6a63e",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
 								"cart",
-								"65ea1fe6aae036b335d6a602"
+								"65ea1fe8aae036b335d6a63e"
 							]
 						}
 					},
@@ -268,6 +270,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get my purchases",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/users/me/purchases",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"users",
+								"me",
+								"purchases"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -275,7 +317,7 @@
 			"name": "Admin",
 			"item": [
 				{
-					"name": "GET Users",
+					"name": "Get all Users",
 					"event": [
 						{
 							"listen": "test",
@@ -327,7 +369,8 @@
 									"const {_id} = body;\r",
 									"postman.setEnvironmentVariable('idUser', _id);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -342,7 +385,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\",\r\n    \"username\": \"jcg93\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"Jesús\",\r\n    \"address\": \"c/ Rarete, 10\",\r\n    \"cp\": \"42758\",\r\n    \"city\": \"Sevilla\",\r\n    \"tlf\": \"658745952\"\r\n}",
+							"raw": "{\r\n    \"email\": \"email@email.com\",\r\n    \"password\": \"pass\",\r\n    \"username\": \"username\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"name\",\r\n    \"address\": \"c/ ..., 10\",\r\n    \"cp\": \"11111\",\r\n    \"city\": \"city\",\r\n    \"tlf\": \"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -597,7 +640,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Messages",
+					"name": "Get all Messages",
 					"event": [
 						{
 							"listen": "test",
@@ -635,7 +678,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Message",
+					"name": "Get one Message",
 					"event": [
 						{
 							"listen": "test",
@@ -668,6 +711,85 @@
 								"admin",
 								"messages",
 								"65eb3e1de7ac871b308014ab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Purchases",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/purchases",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Purchases",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/{{ApiVersion}}/admin/purchases/65f2df5e06ddf3fc924ff094",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"admin",
+								"purchases",
+								"65f2df5e06ddf3fc924ff094"
 							]
 						}
 					},
@@ -806,7 +928,8 @@
 							"    postman.setEnvironmentVariable('token', token);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -815,7 +938,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\"\r\n}",
+					"raw": "{\r\n    \"email\": \"correo@correo.com\",\r\n    \"password\": \"pass\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
