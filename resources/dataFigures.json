@@ -260,6 +260,32 @@
     "animeName": "DragonBallZ"
   },
   {
+    "name": "TZT STUDIO Gohan",
+    "character": "Son Gohan",
+    "company": "Dragon Ball",
+    "price": 230,
+    "dimensions": "38 cm",
+    "material": "PVC",
+    "brand": "TZT STUDIO",
+    "principalImage": "DBZ11-1.webp",
+    "images": ["DBZ11-2.webp", "DBZ11-3.webp", "DBZ11-4.webp", "DBZ11-5.webp"],
+    "amount": 100,
+    "animeName": "DragonBallZ"
+  },
+  {
+    "name": "SKY TOP Goku SS3 vs Fat Buu",
+    "character": "Goku",
+    "company": "Dragon Ball",
+    "price": 280,
+    "dimensions": "40 cm",
+    "material": "PVC",
+    "brand": "SKY TOP",
+    "principalImage": "DBZ12-1.webp",
+    "images": ["DBZ12-2.webp", "DBZ12-3.webp", "DBZ12-4.webp", "DBZ12-5.webp"],
+    "amount": 100,
+    "animeName": "DragonBallZ"
+  },
+  {
     "name": "Kyojuro Rengoku Flame Breathing Fifth Form \"Flame Tiger\"",
     "character": "Kyojuro Rengoku",
     "company": "Demon Slayer",
@@ -386,6 +412,19 @@
     "brand": "Good Smile Company",
     "principalImage": "KNY10-1.webp",
     "images": ["KNY10-2.webp", "KNY10-3.webp", "KNY10-4.webp", "KNY10-5.webp"],
+    "amount": 100,
+    "animeName": "KimetsuNoYaiba"
+  },
+  {
+    "name": "INFINITY STUDIO Nezuko",
+    "character": "Nezuko Kamado",
+    "company": "Demon Slayer",
+    "price": 1099,
+    "dimensions": "60 cm",
+    "material": "PVC",
+    "brand": "INFINITY STUDIO",
+    "principalImage": "KNY11-1.webp",
+    "images": ["KNY11-2.webp", "KNY11-3.webp", "KNY11-4.webp", "KNY11-5.webp"],
     "amount": 100,
     "animeName": "KimetsuNoYaiba"
   },
@@ -776,6 +815,32 @@
     "brand": "Megahouse",
     "principalImage": "OP10-1.webp",
     "images": ["OP10-2.webp", "OP10-3.webp", "OP10-4.webp"],
+    "amount": 100,
+    "animeName": "OnePiece"
+  },
+  {
+    "name": "HS STUDIO Boa Hancock",
+    "character": "Boa Hancock",
+    "company": "One Piece",
+    "price": 280,
+    "dimensions": "42 cm",
+    "material": "PVC",
+    "brand": "HS STUDIO",
+    "principalImage": "OP11-1.webp",
+    "images": ["OP11-2.webp", "OP11-3.webp", "OP11-4.webp"],
+    "amount": 100,
+    "animeName": "OnePiece"
+  },
+  {
+    "name": "MASON STUDIO Yamato",
+    "character": "Yamato",
+    "company": "One Piece",
+    "price": 1099,
+    "dimensions": "70x75x49 cm",
+    "material": "PVC",
+    "brand": "MASON STUDIO",
+    "principalImage": "OP12-1.webp",
+    "images": ["OP12-2.webp", "OP12-3.webp", "OP12-4.webp", "OP12-5.webp"],
     "amount": 100,
     "animeName": "OnePiece"
   }
