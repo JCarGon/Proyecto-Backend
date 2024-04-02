@@ -197,7 +197,8 @@
 									"    pm.response.to.have.status(200);\r",
 									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -211,14 +212,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/65ea1fe6aae036b335d6a602",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/cart/65ea1fe8aae036b335d6a63e",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
 								"cart",
-								"65ea1fe6aae036b335d6a602"
+								"65ea1fe8aae036b335d6a63e"
 							]
 						}
 					},
@@ -385,7 +386,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@email.com\",\r\n    \"password\": \"pass\",\r\n    \"username\": \"username\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"name\",\r\n    \"address\": \"c/ ..., 10\",\r\n    \"cp\": \"11111\",\r\n    \"city\": \"city\",\r\n    \"tlf\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"email\": \"email@email.com\",\r\n    \"password\": \"pass1234\",\r\n    \"username\": \"username\",\r\n    \"rol\": \"admin\",\r\n    \"name\": \"name\",\r\n    \"address\": \"c/ ..., 10\",\r\n    \"cp\": \"11111\",\r\n    \"city\": \"city\",\r\n    \"tlf\": \"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -842,7 +843,8 @@
 									"    pm.response.to.have.status(200);\r",
 									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -850,14 +852,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{ApiURL}}/{{ApiVersion}}/figures/{{idFigure}}",
+							"raw": "{{ApiURL}}/{{ApiVersion}}/figures/65ea1fe6aae036b335d6a602",
 							"host": [
 								"{{ApiURL}}"
 							],
 							"path": [
 								"{{ApiVersion}}",
 								"figures",
-								"{{idFigure}}"
+								"65ea1fe6aae036b335d6a602"
 							]
 						}
 					},
@@ -938,7 +940,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"correo@correo.com\",\r\n    \"password\": \"pass\"\r\n}",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminDAW\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
